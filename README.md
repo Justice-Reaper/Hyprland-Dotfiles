@@ -308,13 +308,6 @@ pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp sw
 pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting rate-mirrors etmpfiles sddm-dinit
 ```
 
-**GRUB:**
-
-```bash
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
-grub-mkconfig -o /boot/grub/grub.cfg
-```
-
 **Snapper — configure btrfs snapshots:**
 
 Snapper creates its own `.snapshots` subvolume, but we already have `@snapshots`. We need to replace it:
@@ -364,6 +357,13 @@ NUMBER_LIMIT_IMPORTANT="7"
 
 Save with `Ctrl+O` → Enter → `Ctrl+X`.
 
+**GRUB:**
+
+```bash
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
 ## 12. Exit and reboot
 
 ```bash
@@ -386,9 +386,9 @@ xdg-user-dirs-update
 **Enable services:**
 
 ```bash
+sudo dinitctl enable NetworkManager
 sudo dinitctl enable dbus
 sudo dinitctl enable elogind
-sudo dinitctl enable NetworkManager
 sudo dinitctl enable chrony
 sudo dinitctl enable syslog-ng
 sudo dinitctl enable cronie
@@ -400,9 +400,9 @@ sudo dinitctl enable sddm
 ```
 
 ```bash
+sudo dinitctl start NetworkManager
 sudo dinitctl start dbus
 sudo dinitctl start elogind
-sudo dinitctl start NetworkManager
 sudo dinitctl start chrony
 sudo dinitctl start syslog-ng
 sudo dinitctl start cronie
