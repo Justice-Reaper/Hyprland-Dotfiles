@@ -297,21 +297,15 @@ Save with `Ctrl+O` → Enter → `Ctrl+X`.
 
 **Install all packages:**
 
-> When installing `sddm-dinit`, pacman asks to choose dependencies:
-> - Font: choose **ttf-liberation**
-> - Display server: choose **xorg-server**
->
-> `windows-10-cursor` is AUR → install later with paru
-
 ```bash
 pacman -Syu
-pacman -S openresolv etmpfiles dbus-dinit elogind-dinit networkmanager-dinit chrony-dinit syslog-ng-dinit logrotate cronie-dinit turnstile-dinit
-pacman -S pipewire-dinit wireplumber-dinit pipewire-pulse pipewire-jack sddm-dinit hyprland kitty btrfs-progs snapper snap-pac grub-btrfs inotify-tools nano
-pacman -S grub os-prober efibootmgr bluez-dinit bluez-utils ttf-liberation inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk linux-headers vulkan-radeon man-db git rust zsh
+pacman -S ttf-liberation openresolv dbus-dinit elogind-dinit networkmanager-dinit chrony-dinit syslog-ng-dinit logrotate cronie-dinit turnstile-dinit
+pacman -S pipewire-dinit wireplumber-dinit pipewire-pulse pipewire-jack xorg-server hyprland kitty btrfs-progs snapper snap-pac grub-btrfs inotify-tools nano
+pacman -S grub os-prober efibootmgr bluez-dinit bluez-utils inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk linux-headers vulkan-radeon man-db git rust zsh
 pacman -S xdg-user-dirs xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
 pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look papirus-icon-theme
 pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp swappy wl-clipboard wl-clip-persist xf86-input-libinput pavucontrol
-pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting rate-mirrors
+pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting rate-mirrors etmpfiles sddm-dinit
 ```
 
 **GRUB:**
