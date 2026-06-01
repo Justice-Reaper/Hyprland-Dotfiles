@@ -321,11 +321,29 @@ Snapper creates its own `.snapshots` subvolume, but we already have `@snapshots`
 
 ```bash
 umount /.snapshots
+```
+
+```bash
 rmdir /.snapshots
+```
+
+```bash
 snapper --no-dbus -c root create-config /
+```
+
+```bash
 btrfs subvolume delete /.snapshots
+```
+
+```bash
 mkdir /.snapshots
+```
+
+```bash
 mount -o rw,noatime,compress=zstd:1,subvol=@snapshots /dev/nvme0n1p2 /.snapshots
+```
+
+```bash
 chmod 750 /.snapshots
 ```
 
