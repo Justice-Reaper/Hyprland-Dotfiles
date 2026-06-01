@@ -39,7 +39,8 @@ Copy/paste with mouse:
 ## 1. Clone the guide from GitHub
 
 ```bash
-git clone https://github.com/Justice-Reaper/Hyprland-Dotfiles.git /home/artix/Hyprland-Dotfiles
+cd /home/artix
+git clone https://github.com/Justice-Reaper/Hyprland-Dotfiles.git
 ```
 
 Open the guide in TTY 1:
@@ -94,6 +95,7 @@ mkfs.btrfs -f $ROOT
 ## 5. Create subvolumes
 
 ```bash
+mkdir /media
 mount $ROOT /media
 
 btrfs subvolume create /media/@
@@ -167,24 +169,68 @@ cat /media/etc/fstab
 artix-chroot /media
 ```
 
-**Install all packages:**
+**Configure repositories:**
+
+```bash
+nano /etc/pacman.conf
+```
+
+Verify that Artix repos are enabled (no `#` in front). If any are commented, uncomment them:
+
+```
+[system]
+Include = /etc/pacman.d/mirrorlist
+
+[world]
+Include = /etc/pacman.d/mirrorlist
+
+[galaxy]
+Include = /etc/pacman.d/mirrorlist
+
+[lib32]
+Include = /etc/pacman.d/mirrorlist
+```
+
+Leave `gremlins` and `goblins` commented. NEVER enable `[core]` from Arch.
+
+**Add Arch repos:**
+
+```bash
+pacman -S artix-archlinux-support
+pacman-key --populate archlinux
+```
+
+Edit `/etc/pacman.conf` again and add at the end, AFTER the Artix repos:
+
+```bash
+nano /etc/pacman.conf
+```
+
+```
+
+# Arch
+[extra]
+Include = /etc/pacman.d/mirrorlist-arch
+
+[multilib]
+Include = /etc/pacman.d/mirrorlist-arch
+
+```
 
 ```bash
 pacman -Syu
-pacman -S openresolv etmpfiles dbus-dinit elogind-dinit networkmanager-dinit chrony-dinit syslog-ng-dinit logrotate cronie-dinit turnstile-dinit
-pacman -S pipewire-dinit wireplumber-dinit pipewire-pulse sddm-dinit hyprland kitty btrfs-progs snapper snap-pac grub-btrfs inotify-tools nano
-pacman -S bluez-dinit bluez-utils ttf-liberation inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk linux-headers vulkan-radeon man-db git rust zsh
-pacman -S xdg-user-dirs xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
-pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look papirus-icon-theme
-pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp swappy wl-clipboard wl-clip-persist xf86-input-libinput pavucontrol
-pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting rate-mirrors
 ```
 
-> When installing `sddm-dinit`, pacman asks to choose dependencies:
-> - Font: choose **ttf-liberation**
-> - Display server: choose **xorg-server**
->
-> `windows-10-cursor` is AUR → install later with paru
+**Add BlackArch:**
+
+```bash
+curl -O https://blackarch.org/strap.sh
+echo 00688950aaf5e5804d2abebb8d3d3ea1d28525ed strap.sh | sha1sum -c
+chmod +x strap.sh
+./strap.sh
+rm strap.sh
+pacman -Syu
+```
 
 **System language:**
 
@@ -250,10 +296,28 @@ It should look like this:
 
 Save with `Ctrl+O` → Enter → `Ctrl+X`.
 
+**Install all packages:**
+
+> When installing `sddm-dinit`, pacman asks to choose dependencies:
+> - Font: choose **ttf-liberation**
+> - Display server: choose **xorg-server**
+>
+> `windows-10-cursor` is AUR → install later with paru
+
+```bash
+pacman -Syu
+pacman -S openresolv etmpfiles dbus-dinit elogind-dinit networkmanager-dinit chrony-dinit syslog-ng-dinit logrotate cronie-dinit turnstile-dinit
+pacman -S pipewire-dinit wireplumber-dinit pipewire-pulse sddm-dinit hyprland kitty btrfs-progs snapper snap-pac grub-btrfs inotify-tools nano
+pacman -S grub os-prober efibootmgr bluez-dinit bluez-utils ttf-liberation inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk linux-headers vulkan-radeon man-db git rust zsh
+pacman -S xdg-user-dirs xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
+pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look papirus-icon-theme
+pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp swappy wl-clipboard wl-clip-persist xf86-input-libinput pavucontrol
+pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting rate-mirrors
+```
+
 **GRUB:**
 
 ```bash
-pacman -S grub os-prober efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
@@ -380,74 +444,15 @@ Snapshot summary:
 | Normal (pre/post) | When installing/removing with pacman | 14 | snap-pac |
 | Important | On PC boot | 7 | cronie (@reboot) |
 
-## 14. Configure repositories
-
-```bash
-sudo nano /etc/pacman.conf
-```
-
-Verify that Artix repos are enabled (no `#` in front). If any are commented, uncomment them:
-
-```
-[system]
-Include = /etc/pacman.d/mirrorlist
-
-[world]
-Include = /etc/pacman.d/mirrorlist
-
-[galaxy]
-Include = /etc/pacman.d/mirrorlist
-
-[lib32]
-Include = /etc/pacman.d/mirrorlist
-```
-
-Leave `gremlins` and `goblins` commented. NEVER enable `[core]` from Arch.
-
-**Add Arch repos:**
-
-```bash
-sudo pacman -S artix-archlinux-support
-sudo pacman-key --populate archlinux
-```
-
-Edit `/etc/pacman.conf` again and add at the end, AFTER the Artix repos:
-
-```bash
-sudo nano /etc/pacman.conf
-```
-
-```
-[extra]
-Include = /etc/pacman.d/mirrorlist-arch
-
-[multilib]
-Include = /etc/pacman.d/mirrorlist-arch
-```
-
-```bash
-sudo pacman -Syu
-```
-
-**Add BlackArch:**
-
-```bash
-curl -O https://blackarch.org/strap.sh
-echo 00688950aaf5e5804d2abebb8d3d3ea1d28525ed strap.sh | sha1sum -c
-sudo chmod +x strap.sh
-sudo ./strap.sh
-sudo pacman -Syu
-```
-
 **Optimize mirrors:**
- 
+
 ```bash
 rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist
 rate-mirrors artix | sudo tee /etc/pacman.d/artix-mirrorlist
 rate-mirrors blackarch | sudo tee /etc/pacman.d/blackarch-mirrorlist
 ```
 
-## 15. Install paru (AUR helper)
+## 14. Install paru (AUR helper)
 
 ```bash
 sudo pacman -S git base-devel
@@ -538,7 +543,7 @@ sudo sed -i \
   /etc/elogind/logind.conf
 ```
 
-## 16. Rollback — recover the system when everything breaks
+## 15. Rollback — recover the system when everything breaks
 
 ### If GRUB works
 
