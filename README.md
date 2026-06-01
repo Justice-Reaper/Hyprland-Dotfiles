@@ -423,6 +423,7 @@ git clone https://github.com/Justice-Reaper/Hyprland-Dotfiles.git
 Open the guide:
 
 ```bash
+cd Hyprland-Dotfiles
 nano README.md
 ```
 
@@ -476,7 +477,7 @@ paru -S themix-full-git swaylock-effects windows-10-cursor google-chrome zsh-sud
 **Hyprland Dotfiles:**
 
 ```bash
-cd ~/Hyprland-Dotfiles
+cd /home/yourusername/Desktop/Hyprland-Dotfiles
 grep -rl 'justice-reaper' . | xargs sed -i 's/justice-reaper/yourusername/g'
 ```
 
