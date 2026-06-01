@@ -383,26 +383,6 @@ start-hyprland
 xdg-user-dirs-update
 ```
 
-Enable and connect to internet:
-
-```bash
-sudo dinitctl enable NetworkManager
-sudo dinitctl start NetworkManager
-nmtui
-```
-
-Clone the repo with the guide:
-
-```bash
-git clone https://github.com/Justice-Reaper/Hyprland-Dotfiles.git ~/Hyprland-Dotfiles
-```
-
-Open the guide:
-
-```bash
-nano ~/Hyprland-Dotfiles/README.md
-```
-
 **Enable services:**
 
 ```bash
@@ -431,6 +411,19 @@ sudo dinitctl start snapper-cleanup
 sudo dinitctl start grub-btrfsd
 sudo dinitctl start bluetoothd
 sudo dinitctl start sddm
+```
+
+Clone the repo with the guide:
+
+```bash
+cd /home/yourusername/Desktop
+git clone https://github.com/Justice-Reaper/Hyprland-Dotfiles.git
+```
+
+Open the guide:
+
+```bash
+nano README.md
 ```
 
 **Automatic snapshot on boot:**
