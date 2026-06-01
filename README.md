@@ -439,6 +439,14 @@ sudo ./strap.sh
 sudo pacman -Syu
 ```
 
+**Optimize mirrors:**
+ 
+```bash
+rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist
+rate-mirrors artix | sudo tee /etc/pacman.d/artix-mirrorlist
+rate-mirrors blackarch | sudo tee /etc/pacman.d/blackarch-mirrorlist
+```
+
 ## 15. Install paru (AUR helper)
 
 ```bash
