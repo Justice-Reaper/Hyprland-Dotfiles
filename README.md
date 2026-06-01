@@ -410,6 +410,17 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
+**Disable suspend when closing laptop lid:**
+
+```bash
+sudo sed -i \
+  -e 's/^#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' \
+  -e 's/^#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' \
+  -e 's/^#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' \
+  -e 's/^#LidSwitchIgnoreInhibited=yes/LidSwitchIgnoreInhibited=yes/' \
+  /etc/elogind/logind.conf
+```
+
 ## 12. Exit and reboot
 
 ```bash
@@ -534,17 +545,6 @@ sudo chmod 644 /etc/pacman.d/hooks/rofi-launcher-filter.hook
 ```bash
 sudo cp mount_options.conf /etc/udisks2
 sudo chmod 644 /etc/udisks2/mount_options.conf
-```
-
-**Disable suspend when closing laptop lid:**
-
-```bash
-sudo sed -i \
-  -e 's/^#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' \
-  -e 's/^#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' \
-  -e 's/^#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' \
-  -e 's/^#LidSwitchIgnoreInhibited=yes/LidSwitchIgnoreInhibited=yes/' \
-  /etc/elogind/logind.conf
 ```
 
 ## 15. Rollback — recover the system when everything breaks
