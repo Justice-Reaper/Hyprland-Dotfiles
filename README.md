@@ -177,7 +177,7 @@ pacman -S bluez-dinit bluez-utils ttf-liberation inter-font noto-fonts noto-font
 pacman -S xdg-user-dirs xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
 pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look papirus-icon-theme
 pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp swappy wl-clipboard wl-clip-persist xf86-input-libinput pavucontrol
-pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting
+pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting rate-mirrors
 ```
 
 > When installing `sddm-dinit`, pacman asks to choose dependencies:
