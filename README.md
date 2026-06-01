@@ -196,7 +196,6 @@ Leave `gremlins` and `goblins` commented. NEVER enable `[core]` from Arch.
 **Add Arch repos:**
 
 ```bash
-pacman -S artix-archlinux-support
 pacman-key --populate archlinux
 ```
 
@@ -229,6 +228,14 @@ chmod +x strap.sh
 ./strap.sh
 rm strap.sh
 pacman -Syu
+```
+
+**Optimize mirrors:**
+
+```bash
+rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist
+rate-mirrors artix | sudo tee /etc/pacman.d/artix-mirrorlist
+rate-mirrors blackarch | sudo tee /etc/pacman.d/blackarch-mirrorlist
 ```
 
 **System language:**
@@ -295,17 +302,34 @@ It should look like this:
 
 Save with `Ctrl+O` → Enter → `Ctrl+X`.
 
+## 14. Install paru (AUR helper)
+
+```bash
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+cd ..
+rm -rf paru
+```
+
+**AUR packages:**
+
+```bash
+paru -S themix-full-git swaylock-effects windows-10-cursor google-chrome zsh-sudo wl-gammarelay-rs cmd-polkit-git acp6x-victus-16e1-dkms
+```
+
 **Install all packages:**
 
 ```bash
 pacman -Syu
-pacman -S ttf-liberation openresolv dbus-dinit elogind-dinit networkmanager-dinit chrony-dinit syslog-ng-dinit logrotate cronie-dinit turnstile-dinit
-pacman -S pipewire-dinit wireplumber-dinit pipewire-pulse pipewire-jack xorg-server hyprland kitty btrfs-progs snapper snap-pac grub-btrfs inotify-tools nano
-pacman -S grub os-prober efibootmgr bluez-dinit bluez-utils inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk linux-headers vulkan-radeon man-db git rust zsh
+pacman -S artix-archlinux-support ttf-liberation openresolv dbus-dinit elogind-dinit networkmanager-dinit chrony-dinit syslog-ng-dinit logrotate
+pacman -S cronie-dinit turnstile-dinit pipewire-dinit wireplumber-dinit pipewire-pulse pipewire-jack xorg-server hyprland kitty btrfs-progs snapper 
+pacman -S grub-btrfs inotify-tools nano grub os-prober efibootmgr bluez-dinit bluez-utils inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk 
 pacman -S xdg-user-dirs xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
 pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look papirus-icon-theme
 pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp swappy wl-clipboard wl-clip-persist xf86-input-libinput pavucontrol
-pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting rate-mirrors etmpfiles sddm-dinit
+pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting rate-mirrors etmpfiles sddm-dinit snap-pac linux-headers vulkan-radeon man-db
+pacman -S git rust zsh
 ```
 
 **Snapper — configure btrfs snapshots:**
@@ -354,6 +378,28 @@ NUMBER_CLEANUP="yes"
 NUMBER_LIMIT="14"
 NUMBER_LIMIT_IMPORTANT="7"
 ```
+
+**Automatic snapshot on boot:**
+
+```bash
+su root
+EDITOR=nano crontab -e
+```
+
+Add this line:
+
+```
+@reboot snapper list | grep -q "$(date +%Y-%m-%d)" || snapper create -d "Boot" -c number --userdata "important=yes"
+```
+
+This creates a snapshot marked as "important" only once per day on the first boot. If you reboot multiple times, it won't create duplicates.
+
+Snapshot summary:
+
+| Type | When created | Limit | Who does it |
+|---|---|---|---|
+| Normal (pre/post) | When installing/removing with pacman | 14 | snap-pac |
+| Important | On PC boot | 7 | cronie (@reboot) |
 
 Save with `Ctrl+O` → Enter → `Ctrl+X`.
 
@@ -425,53 +471,6 @@ Open the guide:
 ```bash
 cd Hyprland-Dotfiles
 nano README.md
-```
-
-**Automatic snapshot on boot:**
-
-```bash
-su root
-EDITOR=nano crontab -e
-```
-
-Add this line:
-
-```
-@reboot snapper list | grep -q "$(date +%Y-%m-%d)" || snapper create -d "Boot" -c number --userdata "important=yes"
-```
-
-This creates a snapshot marked as "important" only once per day on the first boot. If you reboot multiple times, it won't create duplicates.
-
-Snapshot summary:
-
-| Type | When created | Limit | Who does it |
-|---|---|---|---|
-| Normal (pre/post) | When installing/removing with pacman | 14 | snap-pac |
-| Important | On PC boot | 7 | cronie (@reboot) |
-
-**Optimize mirrors:**
-
-```bash
-rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist
-rate-mirrors artix | sudo tee /etc/pacman.d/artix-mirrorlist
-rate-mirrors blackarch | sudo tee /etc/pacman.d/blackarch-mirrorlist
-```
-
-## 14. Install paru (AUR helper)
-
-```bash
-sudo pacman -S git base-devel
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-cd ..
-rm -rf paru
-```
-
-**AUR packages:**
-
-```bash
-paru -S themix-full-git swaylock-effects windows-10-cursor google-chrome zsh-sudo wl-gammarelay-rs cmd-polkit-git acp6x-victus-16e1-dkms
 ```
 
 **Hyprland Dotfiles:**
