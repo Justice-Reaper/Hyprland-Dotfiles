@@ -208,7 +208,6 @@ nano /etc/pacman.conf
 
 ```
 
-# Arch
 [extra]
 Include = /etc/pacman.d/mirrorlist-arch
 
