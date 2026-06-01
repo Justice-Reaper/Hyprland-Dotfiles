@@ -171,10 +171,13 @@ artix-chroot /media
 
 ```bash
 pacman -Syu
-pacman -S eudev openresolv etmpfiles dbus-dinit elogind-dinit networkmanager-dinit chrony-dinit syslog-ng-dinit logrotate cronie-dinit turnstile-dinit nano
-pacman -S pipewire-dinit wireplumber-dinit pipewire-pulse sddm-dinit hyprland kitty btrfs-progs snapper snap-pac grub-btrfs inotify-tools
-pacman -S bluetoothd-dinit ttf-liberation inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk linux-headers vulkan-radeon man-db git rust zsh xdg-user-dirs xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify ntfs-3g exfatprogs dosfstools unzip plocate wget
-pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp swappy wl-clipboard wl-clip-persist xf86-input-libinput pavucontrol blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look papirus-icon-theme zsh-autosuggestions zsh-completions zsh-syntax-highlighting
+pacman -S eudev openresolv etmpfiles dbus-dinit elogind-dinit networkmanager-dinit chrony-dinit syslog-ng-dinit logrotate cronie-dinit turnstile-dinit
+pacman -S pipewire-dinit wireplumber-dinit pipewire-pulse sddm-dinit hyprland kitty btrfs-progs snapper snap-pac grub-btrfs inotify-tools nano
+pacman -S bluetoothd-dinit ttf-liberation inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk linux-headers vulkan-radeon man-db git rust zsh
+pacman -S xdg-user-dirs xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
+pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look papirus-icon-theme
+pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp swappy wl-clipboard wl-clip-persist xf86-input-libinput pavucontrol
+pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting
 ```
 
 > When installing `sddm-dinit`, pacman asks to choose dependencies:
