@@ -311,32 +311,33 @@ sudo dinitctl enable NetworkManager
 sudo dinitctl start NetworkManager
 ```
 
-### Clone the dotfiles repository
-
-```bash
-cd /home/yourusername
-git clone https://github.com/Justice-Reaper/Hyprland-Dotfiles.git
-```
-
-### Apply the Hyprland dotfiles
-
-```bash
-cd /home/yourusername/Hyprland-Dotfiles
-grep -rl 'justice-reaper' . | xargs sed -i 's/justice-reaper/yourusername/g'
-```
-
-```bash
-cd Hyprland-Dotfiles
-nano README.md
-```
-
 ### Create default user dirs
 
 ```bash
 xdg-user-dirs-update
 ```
 
-### Start hyprland
+### Clone the dotfiles repository
+
+```bash
+cd /home/yourusername/Downloads
+git clone https://github.com/Justice-Reaper/Hyprland-Dotfiles.git
+```
+
+### Apply the Hyprland dotfiles
+
+```bash
+cd /home/yourusername/Downloads/Hyprland-Dotfiles
+grep -rl 'justice-reaper' . | xargs sed -i 's/justice-reaper/yourusername/g'
+```
+
+Open the guide in TTY 1
+
+```bash
+nano README.md
+```
+
+### Start hyprland in TTY 2
 
 ```bash
 start-hyprland
