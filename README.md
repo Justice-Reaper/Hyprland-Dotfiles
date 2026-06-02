@@ -214,8 +214,8 @@ passwd
 ### Create your user
 
 ```bash
-useradd -m -G wheel yourusername
-passwd yourusername
+useradd -m -G wheel yourUsername
+passwd yourUsername
 ```
 
 ### Configure sudo for the wheel group
@@ -320,15 +320,15 @@ xdg-user-dirs-update
 ### Clone the dotfiles repository
 
 ```bash
-cd /home/yourusername/Downloads
+cd /home/yourUsername/Downloads
 git clone https://github.com/Justice-Reaper/Hyprland-Dotfiles.git
 ```
 
 ### Apply the Hyprland dotfiles
 
 ```bash
-cd /home/yourusername/Downloads/Hyprland-Dotfiles
-grep -rl 'justice-reaper' . | xargs sed -i 's/justice-reaper/yourusername/g'
+cd /home/yourUsername/Downloads/Hyprland-Dotfiles
+grep -rl 'justice-reaper' . | xargs sed -i 's/justice-reaper/yourUsername/g'
 ```
 
 ### Start hyprland
@@ -429,9 +429,10 @@ pacman -S rate-mirrors
 ```
 
 ```bash
-rate-mirrors artix | sudo tee /etc/pacman.d/mirrorlist
-rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist-arch
-rate-mirrors blackarch | sudo tee /etc/pacman.d/blackarch-mirrorlist
+su root
+su yourUsername -c "rate-mirrors artix" | sudo tee /etc/pacman.d/mirrorlist
+su yourUsername -c "rate-mirrors arch" | sudo tee /etc/pacman.d/mirrorlist-arch
+su yourUsername -c "rate-mirrors blackarch" | sudo tee /etc/pacman.d/blackarch-mirrorlist
 ```
 
 ### Install all packages
@@ -492,14 +493,14 @@ sudo dinitctl start sddm
 ```bash
 mv p10k.zsh .p10k.zsh
 cp zshrc/zshrc-powerlevel10k-user .zshrc
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/yourusername/powerlevel10k
-cp .p10k.zsh /home/yourusername
-cp .zshrc /home/yourusername
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/yourUsername/powerlevel10k
+cp .p10k.zsh /home/yourUsername
+cp .zshrc /home/yourUsername
 cp zshrc/zshrc-powerlevel10k-root .zshrc
 sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k
 sudo cp .p10k.zsh /root
 sudo cp .zshrc /root
-sudo ln -s -f /home/yourusername/.p10k.zsh /root/.p10k.zsh
+sudo ln -s -f /home/yourUsername/.p10k.zsh /root/.p10k.zsh
 ```
 
 ### Set zsh as default shell for user and root
