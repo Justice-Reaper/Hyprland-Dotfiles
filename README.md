@@ -314,14 +314,14 @@ sudo dinitctl start NetworkManager
 ### Clone the dotfiles repository
 
 ```bash
-cd /home/yourusername/Desktop
+cd /home/yourusername
 git clone https://github.com/Justice-Reaper/Hyprland-Dotfiles.git
 ```
 
 ### Apply the Hyprland dotfiles
 
 ```bash
-cd /home/yourusername/Desktop/Hyprland-Dotfiles
+cd /home/yourusername/Hyprland-Dotfiles
 grep -rl 'justice-reaper' . | xargs sed -i 's/justice-reaper/yourusername/g'
 ```
 
