@@ -199,7 +199,7 @@ printf 'KEYMAP=es\nFONT=lat1-16\nFONT_MAP=8859-1_to_uni' > /etc/vconsole.conf
 echo 'artix' > /etc/hostname
 ```
 
-### Configure /etc/hostname
+### Configure /etc/hosts
 
 ```bash
 printf '127.0.0.1   localhost\n::1         localhost\n127.0.1.1   artix.localdomain artix' > /etc/hosts
@@ -275,7 +275,7 @@ nano /etc/snapper/configs/root
 ```
 TIMELINE_CREATE="no"
 NUMBER_CLEANUP="yes"
-NUMBER_LIMIT="14"
+NUMBER_LIMIT="30"
 NUMBER_LIMIT_IMPORTANT="7"
 ```
 
