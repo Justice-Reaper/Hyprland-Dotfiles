@@ -17,7 +17,7 @@
 | systemd --user | User services | turnstile | `turnstile-dinit` |
 | pipewire user svc | Audio | pipewire | `pipewire-dinit` + `wireplumber-dinit` |
 | display manager | Graphical login | sddm | `sddm-dinit` |
-| bluetooth | Bluetooth | bluetoothd | `bluetoothd-dinit` |
+| bluetooth | Bluetooth | bluetoothd | `bluez-dinit` |
 | systemd-homed | User accounts | /etc/passwd | nothing extra |
 | systemd-hostnamed | Hostname | manual edit | `/etc/hostname` |
 | systemd-localed | Locale/keyboard | manual edit | `/etc/locale.conf` + `/etc/vconsole.conf` |
@@ -233,8 +233,8 @@ pacman -Syu
 **Optimize mirrors:**
 
 ```bash
-rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist
-rate-mirrors artix | sudo tee /etc/pacman.d/artix-mirrorlist
+rate-mirrors artix | sudo tee /etc/pacman.d/mirrorlist
+rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist-arch
 rate-mirrors blackarch | sudo tee /etc/pacman.d/blackarch-mirrorlist
 ```
 
@@ -302,7 +302,7 @@ It should look like this:
 
 Save with `Ctrl+O` → Enter → `Ctrl+X`.
 
-## 14. Install paru (AUR helper)
+## 12. Install paru (AUR helper)
 
 ```bash
 git clone https://aur.archlinux.org/paru.git
@@ -324,7 +324,7 @@ paru -S themix-full-git swaylock-effects windows-10-cursor google-chrome zsh-sud
 pacman -Syu
 pacman -S artix-archlinux-support ttf-liberation openresolv dbus-dinit elogind-dinit networkmanager-dinit chrony-dinit syslog-ng-dinit logrotate
 pacman -S cronie-dinit turnstile-dinit pipewire-dinit wireplumber-dinit pipewire-pulse pipewire-jack xorg-server hyprland kitty btrfs-progs snapper 
-pacman -S grub-btrfs inotify-tools nano grub os-prober efibootmgr bluez-dinit bluez-utils inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk 
+pacman -S grub-btrfs nano grub os-prober efibootmgr bluez-dinit bluez-utils inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk 
 pacman -S xdg-user-dirs xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
 pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look papirus-icon-theme
 pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp swappy wl-clipboard wl-clip-persist xf86-input-libinput pavucontrol
@@ -421,14 +421,14 @@ sudo sed -i \
   /etc/elogind/logind.conf
 ```
 
-## 12. Exit and reboot
+## 13. Exit and reboot
 
 ```bash
 exit
 reboot
 ```
 
-## 13. After the first reboot
+## 14. After the first reboot
 
 The system is now installed. You can remove the Artix installation USB.
 
@@ -450,8 +450,6 @@ sudo dinitctl enable chrony
 sudo dinitctl enable syslog-ng
 sudo dinitctl enable cronie
 sudo dinitctl enable turnstiled
-sudo dinitctl enable snapper-cleanup
-sudo dinitctl enable grub-btrfsd
 sudo dinitctl enable bluetoothd
 sudo dinitctl enable sddm
 ```
@@ -464,8 +462,6 @@ sudo dinitctl start chrony
 sudo dinitctl start syslog-ng
 sudo dinitctl start cronie
 sudo dinitctl start turnstiled
-sudo dinitctl start snapper-cleanup
-sudo dinitctl start grub-btrfsd
 sudo dinitctl start bluetoothd
 sudo dinitctl start sddm
 ```
