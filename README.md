@@ -325,13 +325,25 @@ cd Hyprland-Dotfiles
 nano README.md
 ```
 
-### 2.17 Configure automatic snapshot on boot
-
-Add this line
+### 2.17 Create default user dirs
 
 ```bash
-EDITOR=nano crontab -e
+xdg-user-dirs-update
 ```
+
+### 2.18 Start hyprland
+
+```bash
+start-hyprland
+```
+
+### 2.19 Configure automatic snapshot on boot
+
+```bash
+su root -c "EDITOR=nano crontab -e"
+```
+
+Add this line
 
 ```
 @reboot snapper list | grep -q "$(date +%Y-%m-%d)" || snapper create -d "Boot" -c number --userdata "important=yes"
@@ -346,15 +358,7 @@ This creates a snapshot marked as "important" only once per day on the first boo
 
 Save with `Ctrl+O` → Enter → `Ctrl+X`
 
-```bash
-start-hyprland
-```
-
-```bash
-xdg-user-dirs-update
-```
-
-### 2.18 Configure the repositories
+### 2.20 Configure the repositories
 
 Verify that Artix repos are enabled (no `#` in front), if any are commented, uncomment them
 
@@ -378,7 +382,7 @@ Include = /etc/pacman.d/mirrorlist
 
 Leave `gremlins` and `goblins` commented. NEVER enable `[core]` from Arch
 
-### 2.19 Add the Arch repositories
+### 2.21 Add the Arch repositories
 
 ```bash
 sudo pacman -S artix-archlinux-support
@@ -405,7 +409,7 @@ Include = /etc/pacman.d/mirrorlist-arch
 sudo pacman -Syu
 ```
 
-### 2.20 Add the BlackArch repository
+### 2.22 Add the BlackArch repository
 
 ```bash
 curl -O https://blackarch.org/strap.sh
@@ -416,7 +420,7 @@ rm strap.sh
 sudo pacman -Syu
 ```
 
-### 2.21 Optimize the mirrors based on your location
+### 2.23 Optimize the mirrors based on your location
 
 ```bash
 rate-mirrors artix | sudo tee /etc/pacman.d/mirrorlist
@@ -424,7 +428,7 @@ rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist-arch
 rate-mirrors blackarch | sudo tee /etc/pacman.d/blackarch-mirrorlist
 ```
 
-### 2.22 Install all packages
+### 2.24 Install all packages
 
 ```bash
 sudo pacman -Syu
@@ -437,7 +441,7 @@ sudo pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slu
 sudo pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting rate-mirrors
 ```
 
-### 2.23 Install paru as AUR helper
+### 2.25 Install paru as AUR helper
 
 ```bash
 git clone https://aur.archlinux.org/paru.git
@@ -447,13 +451,13 @@ cd ..
 rm -rf paru
 ```
 
-### 2.24 Install AUR packages
+### 2.26 Install AUR packages
 
 ```bash
 paru -S themix-full-git swaylock-effects windows-10-cursor google-chrome zsh-sudo wl-gammarelay-rs cmd-polkit-git acp6x-victus-16e1-dkms
 ```
 
-### 2.25 Enable and start all services
+### 2.27 Enable and start all services
 
 ```bash
 sudo dinitctl enable dbus
@@ -477,7 +481,7 @@ sudo dinitctl start bluetoothd
 sudo dinitctl start sddm
 ```
 
-### 2.26 Configure zshrc and Powerlevel10k
+### 2.28 Configure zshrc and Powerlevel10k
 
 ```bash
 mv p10k.zsh .p10k.zsh
@@ -492,32 +496,32 @@ sudo cp .zshrc /root
 sudo ln -s -f /home/yourusername/.p10k.zsh /root/.p10k.zsh
 ```
 
-### 2.27 Set zsh as default shell for user and root
+### 2.29 Set zsh as default shell for user and root
 
 ```bash
 chsh -s /usr/bin/zsh
 sudo chsh -s /usr/bin/zsh root
 ```
 
-### 2.28 Copy the udev rules
+### 2.30 Copy the udev rules
 
 ```bash
 sudo cp udev/rules.d/* /etc/udev/rules.d/
 ```
 
-### 2.29 Copy the pacman hooks
+### 2.31 Copy the pacman hooks
 
 ```bash
 sudo cp hooks/* /etc/pacman.d/
 ```
 
-### 2.30 Copy the xorg configuration
+### 2.32 Copy the xorg configuration
 
 ```bash
 sudo cp xorg.conf.d/* /etc/X11/xorg.conf.d/
 ```
 
-### 2.31 Configure the rofi launcher filter
+### 2.33 Configure the rofi launcher filter
 
 ```bash
 mkdir -p ~/.local/share/applications
@@ -526,7 +530,7 @@ sudo cp rofi-launcher-filter.hook /etc/pacman.d/hooks
 sudo chmod 644 /etc/pacman.d/hooks/rofi-launcher-filter.hook
 ```
 
-### 2.32 Fix disk mounting in Thunar
+### 2.34 Fix disk mounting in Thunar
 
 ```bash
 sudo cp mount_options.conf /etc/udisks2
