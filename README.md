@@ -405,10 +405,6 @@ Include = /etc/pacman.d/mirrorlist-arch
 
 ```
 
-```bash
-sudo pacman -Syu
-```
-
 ### 2.22 Add the BlackArch repository
 
 ```bash
