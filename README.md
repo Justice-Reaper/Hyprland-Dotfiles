@@ -170,6 +170,7 @@ artix-chroot /media
 ```
 
 ```bash
+pacman -Syu
 pacman -S git ttf-liberation xdg-user-dirs nano dbus-dinit networkmanager-dinit cronie-dinit hyprland kitty grub os-prober efibootmgr btrfs-progs snapper snap-pac grub-btrfs
 ```
 
@@ -192,11 +193,15 @@ printf 'LANG=en_US.UTF-8\nLC_COLLATE=C' > /etc/locale.conf
 printf 'KEYMAP=es\nFONT=lat1-16\nFONT_MAP=8859-1_to_uni' > /etc/vconsole.conf
 ```
 
-### 2.6 Configure the hostname
+### 2.6 Configure /etc/hostname
 
 ```bash
 echo 'artix' > /etc/hostname
+```
 
+### 2.7 Configure /etc/hostname
+
+```bash
 printf '127.0.0.1   localhost\n::1         localhost\n127.0.1.1   artix.localdomain artix' > /etc/hosts
 ```
 
@@ -419,6 +424,10 @@ sudo pacman -Syu
 ### 2.23 Optimize the mirrors based on your location
 
 ```bash
+pacman -S rate-mirrors
+```
+
+```bash
 rate-mirrors artix | sudo tee /etc/pacman.d/mirrorlist
 rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist-arch
 rate-mirrors blackarch | sudo tee /etc/pacman.d/blackarch-mirrorlist
@@ -434,7 +443,7 @@ sudo pacman -S bluez-dinit bluez-utils inter-font noto-fonts noto-fonts-emoji no
 sudo pacman -S xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
 sudo pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look papirus-icon-theme
 sudo pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp swappy wl-clipboard wl-clip-persist xf86-input-libinput pavucontrol
-sudo pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting rate-mirrors
+sudo pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting 
 ```
 
 ### 2.25 Install paru as AUR helper
