@@ -170,7 +170,7 @@ artix-chroot /media
 ```
 
 ```bash
-pacman -S nano dbus-dinit networkmanager-dinit cronie-dinit hyprland kitty grub os-prober efibootmgr btrfs-progs snapper snap-pac grub-btrfs
+pacman -S git nano dbus-dinit networkmanager-dinit cronie-dinit hyprland kitty grub os-prober efibootmgr btrfs-progs snapper snap-pac grub-btrfs
 ```
 
 ### 2.4 Configure the system language
@@ -430,7 +430,7 @@ rate-mirrors blackarch | sudo tee /etc/pacman.d/blackarch-mirrorlist
 sudo pacman -Syu
 sudo pacman -S ttf-liberation openresolv chrony-dinit syslog-ng-dinit logrotate etmpfiles
 sudo pacman -S cronie-dinit turnstile-dinit pipewire-dinit wireplumber-dinit pipewire-pulse pipewire-jack xorg-server sddm-dinit
-sudo pacman -S bluez-dinit bluez-utils inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk linux-headers vulkan-radeon man-db git rust zsh
+sudo pacman -S bluez-dinit bluez-utils inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk linux-headers vulkan-radeon man-db rust zsh
 sudo pacman -S xdg-user-dirs xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
 sudo pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look papirus-icon-theme
 sudo pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp swappy wl-clipboard wl-clip-persist xf86-input-libinput pavucontrol
