@@ -430,9 +430,9 @@ pacman -S rate-mirrors
 
 ```bash
 su root
-su yourUsername -c "rate-mirrors artix" | sudo tee /etc/pacman.d/mirrorlist
-su yourUsername -c "rate-mirrors arch" | sudo tee /etc/pacman.d/mirrorlist-arch
-su yourUsername -c "rate-mirrors blackarch" | sudo tee /etc/pacman.d/blackarch-mirrorlist
+su yourUsername -c "rate-mirrors artix" | tee /etc/pacman.d/mirrorlist
+su yourUsername -c "rate-mirrors arch" | tee /etc/pacman.d/mirrorlist-arch
+su yourUsername -c "rate-mirrors blackarch" | tee /etc/pacman.d/blackarch-mirrorlist
 ```
 
 ### Install all packages
