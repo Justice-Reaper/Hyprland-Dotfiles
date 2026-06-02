@@ -331,16 +331,16 @@ cd /home/yourusername/Downloads/Hyprland-Dotfiles
 grep -rl 'justice-reaper' . | xargs sed -i 's/justice-reaper/yourusername/g'
 ```
 
-Open the guide in TTY 1
-
-```bash
-nano README.md
-```
-
-### Start hyprland in TTY 2
+### Start hyprland
 
 ```bash
 start-hyprland
+```
+
+Open the guide
+
+```bash
+nano README.md
 ```
 
 ### Configure automatic snapshot on boot
