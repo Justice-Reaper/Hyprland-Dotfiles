@@ -25,7 +25,7 @@
 
 ## 1. Partitioning
 
-### 1.1 Prepare the live ISO environment
+### Prepare the live ISO environment
 
 ```bash
 su root
@@ -38,7 +38,7 @@ Copy/paste with mouse
 - Copy → select text with left button
 - Paste → right button
 
-### 1.2 Clone the guide from GitHub
+### Clone the guide from GitHub
 
 ```bash
 cd /home/artix
@@ -58,7 +58,7 @@ Switch back to TTY 1 with `Ctrl+Alt+F1`
 > That's why we mount our partitions at `/media` instead of `/mnt`,
 > to avoid conflicts with `fstabgen`
 
-### 1.3 Identify the disk
+### Identify the disk
 
 ```bash
 lsblk
@@ -72,7 +72,7 @@ EFI="/dev/nvme0n1p1"
 ROOT="/dev/nvme0n1p2"
 ```
 
-### 1.4 Create partitions (512MB EFI + rest btrfs)
+### Create partitions (512MB EFI + rest btrfs)
 
 Inside cfdisk
 1. If there are existing partitions → select each one → `[ Delete ]` → repeat until all cleared
@@ -86,14 +86,14 @@ Inside cfdisk
 cfdisk $DISK
 ```
 
-### 1.5 Format the partitions
+### Format the partitions
 
 ```bash
 mkfs.fat -F32 $EFI
 mkfs.btrfs -f $ROOT
 ```
 
-### 1.6 Create the btrfs subvolumes
+### Create the btrfs subvolumes
 
 ```bash
 mkdir /media
@@ -109,7 +109,7 @@ btrfs subvolume create /media/@snapshots
 umount /media
 ```
 
-### 1.7 Mount all subvolumes
+### Mount all subvolumes
 
 ```bash
 mount -o rw,noatime,compress=zstd:1,subvol=@ $ROOT /media
@@ -130,7 +130,7 @@ mount -o rw,noatime,compress=zstd:1,subvol=@snapshots $ROOT /media/.snapshots
 mount $EFI /media/boot/efi
 ```
 
-### 1.8 Apply NOCOW attributes
+### Apply NOCOW attributes
 
 ```bash
 chattr +C /media/var/cache
@@ -138,7 +138,7 @@ chattr +C /media/var/log
 chattr +C /media/var/lib/libvirt
 ```
 
-### 1.9 Verify the subvolumes and mounts
+### Verify the subvolumes and mounts
 
 ```bash
 btrfs subvolume list /media
@@ -148,20 +148,20 @@ lsattr -d /media/var/cache /media/var/log /media/var/lib/libvirt
 
 ## 2. System Configuration
 
-### 2.1 Install the base system
+### Install the base system
 
 ```bash
 basestrap /media base base-devel dinit elogind-dinit linux linux-firmware
 ```
 
-### 2.2 Generate the fstab
+### Generate the fstab
 
 ```bash
 fstabgen -U /media >> /media/etc/fstab
 cat /media/etc/fstab
 ```
 
-### 2.3 artix-chroot /media
+### artix-chroot /media
 
 Install the minimum packages needed to boot
 
@@ -174,7 +174,7 @@ pacman -Syu
 pacman -S git ttf-liberation xdg-user-dirs nano dbus-dinit networkmanager-dinit cronie-dinit hyprland kitty grub os-prober efibootmgr btrfs-progs snapper snap-pac grub-btrfs
 ```
 
-### 2.4 Configure the system language
+### Configure the system language
 
 Uncomment `en_US.UTF-8 UTF-8`
 
@@ -187,38 +187,38 @@ locale-gen
 printf 'LANG=en_US.UTF-8\nLC_COLLATE=C' > /etc/locale.conf
 ```
 
-### 2.5 Configure the TTY keyboard layout
+### Configure the TTY keyboard layout
 
 ```bash
 printf 'KEYMAP=es\nFONT=lat1-16\nFONT_MAP=8859-1_to_uni' > /etc/vconsole.conf
 ```
 
-### 2.6 Configure /etc/hostname
+### Configure /etc/hostname
 
 ```bash
 echo 'artix' > /etc/hostname
 ```
 
-### 2.7 Configure /etc/hostname
+### Configure /etc/hostname
 
 ```bash
 printf '127.0.0.1   localhost\n::1         localhost\n127.0.1.1   artix.localdomain artix' > /etc/hosts
 ```
 
-### 2.7 Set the root password
+### Set the root password
 
 ```bash
 passwd
 ```
 
-### 2.8 Create your user
+### Create your user
 
 ```bash
 useradd -m -G wheel yourusername
 passwd yourusername
 ```
 
-### 2.9 Configure sudo for the wheel group
+### Configure sudo for the wheel group
 
 Find `# %wheel ALL=(ALL:ALL) ALL` and remove the `#`
 
@@ -234,7 +234,7 @@ It should look like this
 
 Save with `Ctrl+O` → Enter → `Ctrl+X`
 
-### 2.10 Configure snapper for btrfs snapshots
+### Configure snapper for btrfs snapshots
 
 Snapper creates its own `.snapshots` subvolume, but we already have `@snapshots`, we need to replace it
 
@@ -279,14 +279,14 @@ NUMBER_LIMIT="14"
 NUMBER_LIMIT_IMPORTANT="7"
 ```
 
-### 2.11 Install and configure GRUB
+### Install and configure GRUB
 
 ```bash
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-### 2.12 Disable suspend when closing the laptop lid
+### Disable suspend when closing the laptop lid
 
 ```bash
 sed -i 's/^#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/elogind/logind.conf
@@ -295,14 +295,14 @@ sed -i 's/^#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/elo
 sed -i 's/^#LidSwitchIgnoreInhibited=yes/LidSwitchIgnoreInhibited=yes/' /etc/elogind/logind.conf
 ```
 
-### 2.13 Exit chroot and reboot
+### Exit chroot and reboot
 
 ```bash
 exit
 reboot
 ```
 
-### 2.14 After the first reboot
+### After the first reboot
 
 The system is now installed, you can remove the Artix installation USB
 
@@ -311,14 +311,14 @@ sudo dinitctl enable NetworkManager
 sudo dinitctl start NetworkManager
 ```
 
-### 2.15 Clone the dotfiles repository
+### Clone the dotfiles repository
 
 ```bash
 cd /home/yourusername/Desktop
 git clone https://github.com/Justice-Reaper/Hyprland-Dotfiles.git
 ```
 
-### 2.16 Apply the Hyprland dotfiles
+### Apply the Hyprland dotfiles
 
 ```bash
 cd /home/yourusername/Desktop/Hyprland-Dotfiles
@@ -330,19 +330,19 @@ cd Hyprland-Dotfiles
 nano README.md
 ```
 
-### 2.17 Create default user dirs
+### Create default user dirs
 
 ```bash
 xdg-user-dirs-update
 ```
 
-### 2.18 Start hyprland
+### Start hyprland
 
 ```bash
 start-hyprland
 ```
 
-### 2.19 Configure automatic snapshot on boot
+### Configure automatic snapshot on boot
 
 ```bash
 su root -c "EDITOR=nano crontab -e"
@@ -363,7 +363,7 @@ This creates a snapshot marked as "important" only once per day on the first boo
 
 Save with `Ctrl+O` → Enter → `Ctrl+X`
 
-### 2.20 Configure the repositories
+### Configure the repositories
 
 Verify that Artix repos are enabled (no `#` in front), if any are commented, uncomment them
 
@@ -387,7 +387,7 @@ Include = /etc/pacman.d/mirrorlist
 
 Leave `gremlins` and `goblins` commented. NEVER enable `[core]` from Arch
 
-### 2.21 Add the Arch repositories
+### Add the Arch repositories
 
 ```bash
 sudo pacman -S artix-archlinux-support
@@ -410,7 +410,7 @@ Include = /etc/pacman.d/mirrorlist-arch
 
 ```
 
-### 2.22 Add the BlackArch repository
+### Add the BlackArch repository
 
 ```bash
 curl -O https://blackarch.org/strap.sh
@@ -421,7 +421,7 @@ rm strap.sh
 sudo pacman -Syu
 ```
 
-### 2.23 Optimize the mirrors based on your location
+### Optimize the mirrors based on your location
 
 ```bash
 pacman -S rate-mirrors
@@ -433,7 +433,7 @@ rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist-arch
 rate-mirrors blackarch | sudo tee /etc/pacman.d/blackarch-mirrorlist
 ```
 
-### 2.24 Install all packages
+### Install all packages
 
 ```bash
 sudo pacman -Syu
@@ -446,7 +446,7 @@ sudo pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slu
 sudo pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting 
 ```
 
-### 2.25 Install paru as AUR helper
+### Install paru as AUR helper
 
 ```bash
 git clone https://aur.archlinux.org/paru.git
@@ -456,13 +456,13 @@ cd ..
 rm -rf paru
 ```
 
-### 2.26 Install AUR packages
+### Install AUR packages
 
 ```bash
 paru -S themix-full-git swaylock-effects windows-10-cursor google-chrome zsh-sudo wl-gammarelay-rs cmd-polkit-git acp6x-victus-16e1-dkms
 ```
 
-### 2.27 Enable and start all services
+### Enable and start all services
 
 ```bash
 sudo dinitctl enable dbus
@@ -486,7 +486,7 @@ sudo dinitctl start bluetoothd
 sudo dinitctl start sddm
 ```
 
-### 2.28 Configure zshrc and Powerlevel10k
+### Configure zshrc and Powerlevel10k
 
 ```bash
 mv p10k.zsh .p10k.zsh
@@ -501,32 +501,32 @@ sudo cp .zshrc /root
 sudo ln -s -f /home/yourusername/.p10k.zsh /root/.p10k.zsh
 ```
 
-### 2.29 Set zsh as default shell for user and root
+### Set zsh as default shell for user and root
 
 ```bash
 chsh -s /usr/bin/zsh
 sudo chsh -s /usr/bin/zsh root
 ```
 
-### 2.30 Copy the udev rules
+### Copy the udev rules
 
 ```bash
 sudo cp udev/rules.d/* /etc/udev/rules.d/
 ```
 
-### 2.31 Copy the pacman hooks
+### Copy the pacman hooks
 
 ```bash
 sudo cp hooks/* /etc/pacman.d/
 ```
 
-### 2.32 Copy the xorg configuration
+### Copy the xorg configuration
 
 ```bash
 sudo cp xorg.conf.d/* /etc/X11/xorg.conf.d/
 ```
 
-### 2.33 Configure the rofi launcher filter
+### Configure the rofi launcher filter
 
 ```bash
 mkdir -p ~/.local/share/applications
@@ -535,7 +535,7 @@ sudo cp rofi-launcher-filter.hook /etc/pacman.d/hooks
 sudo chmod 644 /etc/pacman.d/hooks/rofi-launcher-filter.hook
 ```
 
-### 2.34 Fix disk mounting in Thunar
+### Fix disk mounting in Thunar
 
 ```bash
 sudo cp mount_options.conf /etc/udisks2
@@ -544,11 +544,11 @@ sudo chmod 644 /etc/udisks2/mount_options.conf
 
 ## 3. How to recover the system when everything breaks
 
-### 3.1 If GRUB works
+### If GRUB works
 
 Reboot → in GRUB select `Artix Linux snapshots` → choose the snapshot you want to restore → it boots in read-only mode → verify it works
 
-### 3.2 If GRUB doesn't work (live USB)
+### If GRUB doesn't work (live USB)
 
 Boot from the Artix USB
 
