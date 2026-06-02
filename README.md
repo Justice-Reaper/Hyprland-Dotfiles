@@ -488,6 +488,12 @@ sudo dinitctl start bluetoothd
 sudo dinitctl start sddm
 ```
 
+### Enable grub-btrfs 
+
+```bash
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
 ### Configure zshrc and Powerlevel10k
 
 ```bash
