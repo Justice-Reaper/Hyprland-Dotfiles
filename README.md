@@ -446,7 +446,7 @@ su justice-reaper -c "rate-mirrors blackarch" | tee /etc/pacman.d/blackarch-mirr
 ```bash
 sudo pacman -Syu
 sudo pacman -S openresolv chrony-dinit syslog-ng-dinit logrotate etmpfiles pipewire-pulse-dinit pipewire-alsa
-sudo pacman -S cronie-dinit turnstile-dinit pipewire-dinit wireplumber-dinit pipewire-jack xorg-server sddm-dinit
+sudo pacman -S cronie-dinit turnstile-dinit pipewire-dinit wireplumber-dinit pipewire-jack xorg-server sddm-dinit pkgfile
 sudo pacman -S bluez-dinit bluez-utils inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk linux-headers vulkan-radeon man-db rust zsh
 sudo pacman -S xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
 sudo pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look papirus-icon-theme
@@ -506,6 +506,16 @@ sudo nano /etc/updatedb.conf
 
 ```bash
 PRUNE_BIND_MOUNTS = "no"
+```
+
+```bash
+sudo updatedb
+```
+
+### Update pkgfile database
+
+```bash
+sudo pkgfile --update
 ```
 
 ### Configure zshrc and Powerlevel10k
