@@ -174,6 +174,12 @@ pacman -Syu
 pacman -S git ttf-liberation xdg-user-dirs nano dbus-dinit networkmanager-dinit cronie-dinit hyprland kitty grub os-prober efibootmgr btrfs-progs snapper snap-pac grub-btrfs
 ```
 
+### Configure the system timezone
+
+```bash
+sudo ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
+```
+
 ### Configure the system language
 
 Uncomment `en_US.UTF-8 UTF-8`
