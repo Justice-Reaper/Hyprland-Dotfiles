@@ -467,7 +467,7 @@ rm -rf paru
 ### Install AUR packages
 
 ```bash
-paru -S themix-full-git swaylock-effects windows-10-cursor google-chrome zsh-sudo wl-gammarelay-rs cmd-polkit-git acp6x-victus-16e1-dkms
+paru -S themix-full-git windows-10-cursor google-chrome zsh-sudo wl-gammarelay-rs cmd-polkit-git acp6x-victus-16e1-dkms
 ```
 
 ### Enable and start all services
@@ -522,6 +522,10 @@ sudo cp .p10k.zsh /root
 sudo cp .zshrc /root
 sudo ln -s -f /home/justice-reaper/.p10k.zsh /root/.p10k.zsh
 ```
+
+### Configure sddm and quickshell
+
+Follow these steps to install sddm as display manager and quickshell as lockscreen [https://github.com/Darkkal44/qylock.git](https://github.com/Darkkal44/qylock.git). It is recommended to use the pixel-cyberpunk or pixel-waterfall theme
 
 ### Set zsh as default shell for user and root
 
