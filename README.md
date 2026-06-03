@@ -220,8 +220,8 @@ passwd
 ### Create your user
 
 ```bash
-useradd -m -G wheel yourUsername
-passwd yourUsername
+useradd -m -G wheel justice-reaper
+passwd justice-reaper
 ```
 
 ### Configure sudo for the wheel group
@@ -326,14 +326,14 @@ xdg-user-dirs-update
 ### Clone the dotfiles repository
 
 ```bash
-cd /home/yourUsername/Downloads
+cd /home/justice-reaper/Downloads
 git clone https://github.com/Justice-Reaper/Hyprland-Dotfiles.git
 ```
 
 ### Apply the Hyprland dotfiles
 
 ```bash
-cd /home/yourUsername/Downloads/Hyprland-Dotfiles
+cd /home/justice-reaper/Downloads/Hyprland-Dotfiles
 grep -rl 'justice-reaper' . | xargs sed -i 's/justice-reaper/yourUsername/g'
 ```
 
@@ -436,9 +436,9 @@ pacman -S rate-mirrors
 
 ```bash
 su root
-su yourUsername -c "rate-mirrors artix" | tee /etc/pacman.d/mirrorlist
-su yourUsername -c "rate-mirrors arch" | tee /etc/pacman.d/mirrorlist-arch
-su yourUsername -c "rate-mirrors blackarch" | tee /etc/pacman.d/blackarch-mirrorlist
+su justice-reaper -c "rate-mirrors artix" | tee /etc/pacman.d/mirrorlist
+su justice-reaper -c "rate-mirrors arch" | tee /etc/pacman.d/mirrorlist-arch
+su justice-reaper -c "rate-mirrors blackarch" | tee /etc/pacman.d/blackarch-mirrorlist
 ```
 
 ### Install all packages
@@ -473,7 +473,7 @@ paru -S themix-full-git swaylock-effects windows-10-cursor google-chrome zsh-sud
 ### Enable and start all services
 
 ```bash
-su yourUsername
+su justice-reaper
 dinitctl --user enable pipewire
 dinitctl --user enable wireplumber
 dinitctl --user enable pipewire-pulse
@@ -513,14 +513,14 @@ PRUNE_BIND_MOUNTS = "no"
 ```bash
 mv p10k.zsh .p10k.zsh
 cp zshrc/zshrc-powerlevel10k-user .zshrc
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/yourUsername/powerlevel10k
-cp .p10k.zsh /home/yourUsername
-cp .zshrc /home/yourUsername
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /home/justice-reaper/powerlevel10k
+cp .p10k.zsh /home/justice-reaper
+cp .zshrc /home/justice-reaper
 cp zshrc/zshrc-powerlevel10k-root .zshrc
 sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/powerlevel10k
 sudo cp .p10k.zsh /root
 sudo cp .zshrc /root
-sudo ln -s -f /home/yourUsername/.p10k.zsh /root/.p10k.zsh
+sudo ln -s -f /home/justice-reaper/.p10k.zsh /root/.p10k.zsh
 ```
 
 ### Set zsh as default shell for user and root
