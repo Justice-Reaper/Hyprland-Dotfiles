@@ -473,27 +473,21 @@ paru -S themix-full-git swaylock-effects windows-10-cursor google-chrome zsh-sud
 ### Enable and start all services
 
 ```bash
-sudo dinitctl enable dbus
-sudo dinitctl enable elogind
-sudo dinitctl enable chrony
-sudo dinitctl enable syslog-ng
-sudo dinitctl enable cronie
-sudo dinitctl enable turnstiled
-sudo dinitctl enable bluetoothd
-sudo dinitctl enable sddm
+su yourUsername
+dinitctl --user enable pipewire
 ```
 
 ```bash
-sudo dinitctl start dbus
-sudo dinitctl start elogind
-sudo dinitctl start chrony
-sudo dinitctl start syslog-ng
-sudo dinitctl start cronie
-sudo dinitctl start turnstiled
-sudo dinitctl start bluetoothd
-sudo dinitctl start sddm
+su root
+dinitctl enable dbus
+dinitctl enable elogind
+dinitctl enable chrony
+dinitctl enable syslog-ng
+dinitctl enable cronie
+dinitctl enable turnstiled
+dinitctl enable bluetoothd
+dinitctl enable sddm
 ```
-
 ### Enable grub-btrfs 
 
 ```bash
