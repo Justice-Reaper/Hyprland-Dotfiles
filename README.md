@@ -494,6 +494,18 @@ sudo dinitctl start sddm
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
+### Configure plocate for bind mounts
+
+Find and change this value
+
+```bash
+sudo nano /etc/updatedb.conf
+```
+
+```bash
+PRUNE_BIND_MOUNTS = "no"
+```
+
 ### Configure zshrc and Powerlevel10k
 
 ```bash
