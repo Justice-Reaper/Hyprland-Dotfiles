@@ -349,7 +349,7 @@ Open the guide
 nano README.md
 ```
 
-### Configure automatic snapshot on boot
+### Configure automatic snapshots at boot and daily snapshot cleanup
 
 ```bash
 su root -c "EDITOR=nano crontab -e"
@@ -359,6 +359,7 @@ Add this line
 
 ```
 @reboot snapper list | grep -q "$(date +%Y-%m-%d)" || snapper create -d "Boot" -c number --userdata "important=yes"
+@daily snapper -c root cleanup number
 ```
 
 This creates a snapshot marked as "important" only once per day on the first boot, if you reboot multiple times, it won't create duplicates
