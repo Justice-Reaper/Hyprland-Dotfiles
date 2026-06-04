@@ -491,6 +491,7 @@ dinitctl enable turnstiled
 dinitctl enable bluetoothd
 dinitctl enable sddm
 ```
+
 ### Enable grub-btrfs 
 
 ```bash
