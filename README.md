@@ -534,6 +534,19 @@ sudo cp .zshrc /root
 sudo ln -s -f /home/justice-reaper/.p10k.zsh /root/.p10k.zsh
 ```
 
+### Copy the configuration files
+
+```bash
+mv config .config
+cp -r .config /home/justice-reaper
+```
+
+### Copy the udev rules
+
+```bash
+cp rules/* /etc/udev/rules.d/
+```
+
 ### Configure sddm and quickshell
 
 Follow these steps to install sddm as display manager and quickshell as lockscreen [https://github.com/Darkkal44/qylock.git](https://github.com/Darkkal44/qylock.git). It is recommended to use the pixel-cyberpunk or pixel-waterfall theme
