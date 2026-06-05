@@ -452,7 +452,7 @@ sudo pacman -S bluez-dinit bluez-utils inter-font noto-fonts noto-fonts-emoji no
 sudo pacman -S xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
 sudo pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look
 sudo pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp swappy wl-clipboard wl-clip-persist xf86-input-libinput
-sudo pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting celluloid jre25-openjdk
+sudo pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting celluloid
 ```
 
 ### Install paru as AUR helper
@@ -468,7 +468,7 @@ rm -rf paru
 ### Install AUR packages
 
 ```bash
-paru -S themix-full-git windows-10-cursor google-chrome zsh-sudo wl-gammarelay-rs cmd-polkit-git acp6x-victus-16e1-dkms burpsuite-pro
+paru -S themix-full-git windows-10-cursor google-chrome zsh-sudo wl-gammarelay-rs cmd-polkit-git acp6x-victus-16e1-dkms
 ```
 
 ### Enable and start all services
@@ -531,14 +531,14 @@ sudo cp -r keyboard/99-keyboard.conf /etc/X11/xorg.conf.d
 ### Install Burp Suite Professional
 
 ```bash
-sudo cp -r burpsuite-professional /opt
+sudo cp -r burpsuite-professional/burpsuite-professional /opt
 cd /opt/burpsuite-professional
 ```
 
 Download the latest Burp Suite Professional JAR here https://portswigger.net/burp/releases#professional and copy it
 
 ```bash
-sudo cp burpsuite_desktop_v2026.4.3.jar /opt/burpsuite-professional
+sudo cp /home/justice-reaper/Downloads/burpsuite_desktop_v2026.4.3.jar /opt/burpsuite-professional
 ```
 
 We run this command, and in the part where it says jarFileName, we need to put the name of the downloaded JAR. In this case, it would be burpsuite_desktop_v2026.4.3.jar
@@ -558,20 +558,20 @@ burpsuitepro
 Copy the Burp Suite Professional icons
 
 ```bash
-sudo cp burpsuite-professional-icons/16x16/burpsuitepro.png /usr/share/icons/hicolor/16x16/apps/burpsuitepro.png
-sudo cp burpsuite-professional-icons/24x24/burpsuitepro.png /usr/share/icons/hicolor/24x24/apps/burpsuitepro.png
-sudo cp burpsuite-professional-icons/32x32/burpsuitepro.png /usr/share/icons/hicolor/32x32/apps/burpsuitepro.png
-sudo cp burpsuite-professional-icons/48x48/burpsuitepro.png /usr/share/icons/hicolor/48x48/apps/burpsuitepro.png
-sudo cp burpsuite-professional-icons/128x128/burpsuitepro.png /usr/share/icons/hicolor/128x128/apps/burpsuitepro.png
-sudo cp burpsuite-professional-icons/256x256/burpsuitepro.png /usr/share/icons/hicolor/256x256/apps/burpsuitepro.png
-sudo cp burpsuite-professional-icons/512x512/burpsuitepro.png /usr/share/icons/hicolor/512x512/apps/burpsuitepro.png
-sudo cp burpsuite-professional-icons/scalable/burpsuitepro.svg /usr/share/icons/hicolor/scalable/apps/burpsuitepro.svg
+sudo cp burpsuite-professional/burpsuite-professional-icons/16x16/burpsuitepro.png /usr/share/icons/hicolor/16x16/apps/burpsuitepro.png
+sudo cp burpsuite-professional/burpsuite-professional-icons/24x24/burpsuitepro.png /usr/share/icons/hicolor/24x24/apps/burpsuitepro.png
+sudo cp burpsuite-professional/burpsuite-professional-icons/32x32/burpsuitepro.png /usr/share/icons/hicolor/32x32/apps/burpsuitepro.png
+sudo cp burpsuite-professional/burpsuite-professional-icons/48x48/burpsuitepro.png /usr/share/icons/hicolor/48x48/apps/burpsuitepro.png
+sudo cp burpsuite-professional/burpsuite-professional-icons/128x128/burpsuitepro.png /usr/share/icons/hicolor/128x128/apps/burpsuitepro.png
+sudo cp burpsuite-professional/burpsuite-professional-icons/256x256/burpsuitepro.png /usr/share/icons/hicolor/256x256/apps/burpsuitepro.png
+sudo cp burpsuite-professional/burpsuite-professional-icons/512x512/burpsuitepro.png /usr/share/icons/hicolor/512x512/apps/burpsuitepro.png
+sudo cp burpsuite-professional/burpsuite-professional-icons/scalable/burpsuitepro.svg /usr/share/icons/hicolor/scalable/apps/burpsuitepro.svg
 ```
 
 Copy the Burp Suite Professional shortcut
 
 ```bash
-sudo cp burpsuitepro.desktop /usr/share/applications
+sudo cp burpsuite-professional/burpsuitepro.desktop /usr/share/applications
 ```
 
 ### Configure zshrc and Powerlevel10k
