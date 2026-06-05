@@ -220,7 +220,7 @@ passwd
 ### Create your user
 
 ```bash
-useradd -m -G wheel justice-reaper
+useradd -m -G wheel,storage justice-reaper
 passwd justice-reaper
 ```
 
