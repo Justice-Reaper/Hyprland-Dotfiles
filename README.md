@@ -520,6 +520,14 @@ sudo updatedb
 sudo pkgfile --update
 ```
 
+### Keyboard Configuration (X11)
+
+Sets the keyboard layout for the X11 environment, including the SDDM login screen. It configures the system to use a Spanish keyboard layout
+
+```bash
+sudo cp -r keyboard/99-keyboard.conf /etc/X11/xorg.conf.d
+```
+
 ### Configure zshrc and Powerlevel10k
 
 ```bash
