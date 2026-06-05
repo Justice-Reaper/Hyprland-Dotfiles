@@ -528,6 +528,52 @@ Sets the keyboard layout for the X11 environment, including the SDDM login scree
 sudo cp -r keyboard/99-keyboard.conf /etc/X11/xorg.conf.d
 ```
 
+### Install Burp Suite Professional
+
+```bash
+sudo cp -r burpsuite-professional /opt
+cd /opt/burpsuite-professional
+```
+
+Download the latest Burp Suite Professional JAR here https://portswigger.net/burp/releases#professional and copy it
+
+```bash
+sudo cp burpsuite_desktop_v2026.4.3.jar /opt/burpsuite-professional
+```
+
+We run this command, and in the part where it says jarFileName, we need to put the name of the downloaded JAR. In this case, it would be burpsuite_desktop_v2026.4.3.jar
+
+```bash
+sudo echo "java --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.Opcodes=ALL-UNNAMED -javaagent:$(pwd)/loader.jar -noverify -jar $(pwd)/jarFileName &" > /usr/bin/burpsuitepro
+sudo chmod 755 /usr/bin/burpsuitepro
+```
+
+Activate Burp Suite Professional
+
+```bash
+javar -jar loader.jar &
+burpsuitepro
+```
+
+Copy the Burp Suite Professional icons
+
+```bash
+sudo cp burpsuite-professional-icons/16x16/burpsuitepro.png /usr/share/icons/hicolor/16x16/apps/burpsuitepro.png
+sudo cp burpsuite-professional-icons/24x24/burpsuitepro.png /usr/share/icons/hicolor/24x24/apps/burpsuitepro.png
+sudo cp burpsuite-professional-icons/32x32/burpsuitepro.png /usr/share/icons/hicolor/32x32/apps/burpsuitepro.png
+sudo cp burpsuite-professional-icons/48x48/burpsuitepro.png /usr/share/icons/hicolor/48x48/apps/burpsuitepro.png
+sudo cp burpsuite-professional-icons/128x128/burpsuitepro.png /usr/share/icons/hicolor/128x128/apps/burpsuitepro.png
+sudo cp burpsuite-professional-icons/256x256/burpsuitepro.png /usr/share/icons/hicolor/256x256/apps/burpsuitepro.png
+sudo cp burpsuite-professional-icons/512x512/burpsuitepro.png /usr/share/icons/hicolor/512x512/apps/burpsuitepro.png
+sudo cp burpsuite-professional-icons/scalable/burpsuitepro.svg /usr/share/icons/hicolor/scalable/apps/burpsuitepro.svg
+```
+
+Copy the Burp Suite Professional shortcut
+
+```bash
+sudo cp burpsuitepro.desktop /usr/share/applications
+```
+
 ### Configure zshrc and Powerlevel10k
 
 ```bash
