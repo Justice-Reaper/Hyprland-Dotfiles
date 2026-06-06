@@ -452,7 +452,7 @@ sudo pacman -S bluez-dinit bluez-utils inter-font noto-fonts noto-fonts-emoji no
 sudo pacman -S xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
 sudo pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look
 sudo pacman -S waybar hyprpaper rofi mako btop fastfetch jq lsd bat fzf grim slurp swappy wl-clipboard wl-clip-persist xf86-input-libinput
-sudo pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting celluloid featherpad
+sudo pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting celluloid featherpad jre21-openjdk
 ```
 
 ### Install paru as AUR helper
@@ -547,6 +547,18 @@ We run this command, and in the part where it says jarFileName, we need to put t
 ```bash
 echo "java --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.Opcodes=ALL-UNNAMED -javaagent:$(pwd)/loader.jar -noverify -jar $(pwd)/jarFileName &" > /usr/bin/burpsuitepro
 chmod 755 /usr/bin/burpsuitepro
+```
+
+List the available Java versions
+
+```bash
+archlinux-java status
+```
+
+Set Java 21 as the default version
+
+```bash
+sudo archlinux-java set java-21-openjdk
 ```
 
 Activate Burp Suite Professional
