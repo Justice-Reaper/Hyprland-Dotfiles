@@ -531,26 +531,28 @@ sudo cp -r keyboard/99-keyboard.conf /etc/X11/xorg.conf.d
 ### Install Burp Suite Professional
 
 ```bash
-sudo cp -r burpsuite-professional/burpsuite-professional /opt
+su root
+cp -r burpsuite-professional/burpsuite-professional /opt
 cd /opt/burpsuite-professional
 ```
 
 Download the latest Burp Suite Professional JAR here https://portswigger.net/burp/releases#professional and copy it
 
 ```bash
-sudo cp /home/justice-reaper/Downloads/burpsuite_desktop_v2026.4.3.jar /opt/burpsuite-professional
+cp /home/justice-reaper/Downloads/burpsuite_desktop_v2026.4.3.jar /opt/burpsuite-professional
 ```
 
 We run this command, and in the part where it says jarFileName, we need to put the name of the downloaded JAR. In this case, it would be burpsuite_desktop_v2026.4.3.jar
 
 ```bash
-sudo echo "java --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.Opcodes=ALL-UNNAMED -javaagent:$(pwd)/loader.jar -noverify -jar $(pwd)/jarFileName &" > /usr/bin/burpsuitepro
-sudo chmod 755 /usr/bin/burpsuitepro
+echo "java --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED --add-opens=java.base/jdk.internal.org.objectweb.asm.Opcodes=ALL-UNNAMED -javaagent:$(pwd)/loader.jar -noverify -jar $(pwd)/jarFileName &" > /usr/bin/burpsuitepro
+chmod 755 /usr/bin/burpsuitepro
 ```
 
 Activate Burp Suite Professional
 
 ```bash
+su justice-reaper
 javar -jar loader.jar &
 burpsuitepro
 ```
