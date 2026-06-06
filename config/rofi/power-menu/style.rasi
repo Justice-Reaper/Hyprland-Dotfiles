@@ -1,0 +1,81 @@
+/*****----- Colors -----*****/
+* {
+    selected:       #70A5EB;
+    black:          #101419;
+    white:          #DEE1E6;
+    green:          #76B97F;
+    red:            #E05F65;
+    gray:           #28344A;
+}
+
+/*****----- Fonts -----*****/
+* {
+    font:             "Hack Nerd Font 10";
+}
+
+/*****----- Global Settings -----*****/
+* {
+    padding:          0;
+    margin:           0;
+    border:           0;
+    spacing:          0;
+    background-color: transparent;
+    border-color:     transparent;
+}
+
+/*****----- Configuration -----*****/
+configuration {
+
+    /*---------- Keybindings ----------*/
+    kb-move-front:              "KP_Home";
+    kb-row-first:               "";
+    kb-move-end:                "KP_End";
+    kb-row-last:                "";
+    kb-move-word-back:          "Alt+Left";
+    kb-move-word-forward:       "Alt+Right";
+    kb-remove-word-back:        "Alt+BackSpace";
+    kb-remove-word-forward:     "Alt+Delete";
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    north east;
+    anchor:                      north east;
+    width:                       175px;
+    x-offset:                    -15px;
+    y-offset:                    57px;
+    background-color:            @black;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    padding:                     15px;
+    children:                    [ "listview" ];
+}
+
+/*****----- Listview -----*****/
+listview {
+    lines:                       5;
+    spacing:                     3px;
+    text-color:                  @white;
+}
+
+/*****----- Elements -----*****/
+element {
+    padding:                     10px;
+    border-radius:               10px;
+    cursor:                      pointer;
+    text-color:                  inherit;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @black;
+}
+
+element-text {
+    cursor:                      inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+}
