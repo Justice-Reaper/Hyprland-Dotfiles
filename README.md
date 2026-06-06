@@ -574,6 +574,7 @@ Copy the Burp Suite Professional shortcut
 
 ```bash
 sudo cp burpsuite-professional/burpsuitepro.desktop /usr/share/applications
+cp burpsuite-professional/burpsuitepro.desktop /home/justice-reaper/.local/share/applications
 ```
 
 ### Configure zshrc and Powerlevel10k
