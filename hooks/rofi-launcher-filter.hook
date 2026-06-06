@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = usr/share/applications/*.desktop
+
+[Action]
+Description = Updating rofi launcher filter...
+When = PostTransaction
+Exec = /home/justice-reaper/.config/rofi/launcher/filter.sh
+NeedsTargets
