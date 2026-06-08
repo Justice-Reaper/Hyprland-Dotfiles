@@ -655,13 +655,6 @@ sudo cp rofi-launcher-filter.hook /etc/pacman.d/hooks
 sudo chmod 644 /etc/pacman.d/hooks/rofi-launcher-filter.hook
 ```
 
-### Fix disk mounting in Thunar
-
-```bash
-sudo cp mount_options.conf /etc/udisks2
-sudo chmod 644 /etc/udisks2/mount_options.conf
-```
-
 ## 3. How to recover the system when everything breaks
 
 ### If GRUB works
