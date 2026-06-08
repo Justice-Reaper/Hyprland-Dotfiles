@@ -471,6 +471,12 @@ rm -rf paru
 paru -S themix-full-git windows-10-cursor google-chrome zsh-sudo wl-gammarelay-rs cmd-polkit-git acp6x-victus-16e1-dkms nomacs
 ```
 
+### Create services
+
+```bash
+sudo cp services/grub-btrfsd /etc/dinit.d
+```
+
 ### Enable and start all services
 
 ```bash
@@ -490,6 +496,7 @@ dinitctl enable cronie
 dinitctl enable turnstiled
 dinitctl enable bluetoothd
 dinitctl enable sddm
+dinitctl enable grub-btrfsd
 ```
 
 ### Enable grub-btrfs 
