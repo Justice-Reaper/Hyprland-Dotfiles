@@ -527,10 +527,10 @@ sudo updatedb
 sudo pkgfile --update
 ```
 
-### Configure x11
+### Configure X11
 
 ```bash
-sudo cp -r x11/* /etc/X11/xorg.conf.d
+sudo cp -r X11/* /etc/X11/xorg.conf.d
 ```
 
 ### Install Burp Suite Professional
