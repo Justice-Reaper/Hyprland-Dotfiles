@@ -527,12 +527,10 @@ sudo updatedb
 sudo pkgfile --update
 ```
 
-### Keyboard Configuration (X11)
-
-Sets the keyboard layout for the X11 environment, including the SDDM login screen. It configures the system to use a Spanish keyboard layout
+### Configure x11
 
 ```bash
-sudo cp -r keyboard/99-keyboard.conf /etc/X11/xorg.conf.d
+sudo cp -r x11/* /etc/X11/xorg.conf.d
 ```
 
 ### Install Burp Suite Professional
