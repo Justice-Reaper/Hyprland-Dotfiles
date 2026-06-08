@@ -1,2 +1,2 @@
-ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", RUN+="/home/justice-reaper/.config/sound/scripts/add-usb.sh"
-ACTION=="remove", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", RUN+="/home/justice-reaper/.config/sound/scripts/remove-usb.sh"
+ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", RUN+="/home/justice-reaper/.config/usb-sound/scripts/add-usb.sh"
+ACTION=="remove", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", RUN+="/home/justice-reaper/.config/usb-sound/scripts/remove-usb.sh"
