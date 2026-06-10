@@ -446,7 +446,7 @@ su justice-reaper -c "rate-mirrors blackarch" | tee /etc/pacman.d/blackarch-mirr
 
 ```bash
 sudo pacman -Syu
-sudo pacman -S openresolv chrony-dinit syslog-ng-dinit logrotate etmpfiles pipewire-pulse-dinit pipewire-alsa obsidian papirus-icon-theme
+sudo pacman -S openresolv chrony-dinit syslog-ng-dinit logrotate etmpfiles pipewire-pulse-dinit pipewire-alsa obsidian papirus-icon-e
 sudo pacman -S cronie-dinit turnstile-dinit pipewire-dinit wireplumber-dinit pipewire-jack xorg-server sddm-dinit pkgfile pavucontrol
 sudo pacman -S bluez-dinit bluez-utils inter-font noto-fonts noto-fonts-emoji noto-fonts-cjk linux-headers vulkan-radeon man-db rust zsh
 sudo pacman -S xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal qt5-wayland qt6-wayland hyprland-qt-support libnotify
@@ -468,7 +468,7 @@ rm -rf paru
 ### Install AUR packages
 
 ```bash
-paru -S themix-full-git windows-10-cursor google-chrome zsh-sudo wl-gammarelay-rs cmd-polkit-git acp6x-victus-16e1-dkms nomacs
+paru -S ix-full-git windows-10-cursor google-chrome zsh-sudo wl-gammarelay-rs cmd-polkit-git acp6x-victus-16e1-dkms nomacs
 ```
 
 ### Create services
@@ -656,6 +656,8 @@ Run nwg-look and set these options
 ```bash
 nwg-look
 ```
+
+If we want to recreate the theme, we need to follow the steps in oomox-user-preset/RECREATE-OOMOX-THEME.md
 
 ### Configure zshrc and Powerlevel10k
 
