@@ -600,7 +600,7 @@ Configure the theme for GTK3
 
 ```bash
 mkdir -p /home/justice-reaper/.themes/oomox-tokyo-night-dark
-cp -r gtk3/* /home/justice-reaper/.themes/oomox-tokyo-night-dark
+cp -r oomox-themes/gtk3/* /home/justice-reaper/.themes/oomox-tokyo-night-dark
 ```
 
 Configure the theme for GTK4
@@ -608,7 +608,7 @@ Configure the theme for GTK4
 ```bash
 mkdir -p /home/justice-reaper/.themes/oomox-tokyo-night-dark/gtk-4.0
 mkdir -p /home/justice-reaper/.config/gtk-4.0
-cp gtk4/gtk.css /home/justice-reaper/.themes/oomox-tokyo-night-dark/gtk-4.0
+cp oomox-themes/gtk4/gtk.css /home/justice-reaper/.themes/oomox-tokyo-night-dark/gtk-4.0
 ln -sf /home/justice-reaper/.themes/oomox-tokyo-night-dark/gtk-4.0/gtk.css /home/justice-reaper/.config/gtk-4.0/gtk.css
 ```
 
@@ -616,15 +616,15 @@ Configure the theme for Qt5 and Qt6
 
 ```bash
 mkdir -p /home/justice-reaper/.config/qt5ct/colors /home/justice-reaper/.config/qt6ct/colors
-cp qt5ct/colors/oomox-tokyo-night-dark.conf /home/justice-reaper/.config/qt5ct/colors
-cp qt6ct/colors/oomox-tokyo-night-dark.conf /home/justice-reaper/.config/qt6ct/colors
+cp oomox-themes/qt5ct/colors/oomox-tokyo-night-dark.conf /home/justice-reaper/.config/qt5ct/colors
+cp oomox-themes/qt6ct/colors/oomox-tokyo-night-dark.conf /home/justice-reaper/.config/qt6ct/colors
 ```
 
 Configure the icons
 
 ```bash
 mkdir -p /home/justice-reaper/.icons/oomox-tokyo-night-dark
-cp -r icons/* /home/justice-reaper/.icons/oomox-tokyo-night-dark
+cp -r oomox-themes/icons/* /home/justice-reaper/.icons/oomox-tokyo-night-dark
 ```
 
 Run qt5ct qt6ct and set these options
@@ -657,7 +657,14 @@ Run nwg-look and set these options
 nwg-look
 ```
 
-If we want to recreate the theme, we need to follow the steps in oomox-user-preset/RECREATE-OOMOX-THEME.md
+If there are any issues, you can recreate the theme by following the steps in oomox-user-preset/RECREATE-OOMOX-THEME.md
+
+### Add custom tools
+
+```bash
+chmod 755 bin/*
+sudo cp bin/* /usr/bin
+```
 
 ### Configure zshrc and Powerlevel10k
 
