@@ -594,6 +594,69 @@ sudo cp burpsuite-professional/burpsuitepro.desktop /usr/share/applications
 cp burpsuite-professional/burpsuitepro.desktop /home/justice-reaper/.local/share/applications
 ```
 
+### Set as system theme tokyo night dark
+
+Configure the theme for GTK3
+
+```bash
+mkdir -p /home/justice-reaper/.themes/oomox-tokyo-night-dark
+cp -r gtk3/* /home/justice-reaper/.themes/oomox-tokyo-night-dark
+```
+
+Configure the theme for GTK4
+
+```bash
+mkdir -p /home/justice-reaper/.themes/oomox-tokyo-night-dark/gtk-4.0
+mkdir -p /home/justice-reaper/.config/gtk-4.0
+cp gtk4/gtk.css /home/justice-reaper/.themes/oomox-tokyo-night-dark/gtk-4.0
+ln -sf /home/justice-reaper/.themes/oomox-tokyo-night-dark/gtk-4.0/gtk.css /home/justice-reaper/.config/gtk-4.0/gtk.css
+```
+
+Configure the theme for Qt5 and Qt6
+
+```bash
+mkdir -p /home/justice-reaper/.config/qt5ct/colors /home/justice-reaper/.config/qt6ct/colors
+cp qt5ct/colors/oomox-tokyo-night-dark.conf /home/justice-reaper/.config/qt5ct/colors
+cp qt6ct/colors/oomox-tokyo-night-dark.conf /home/justice-reaper/.config/qt6ct/colors
+```
+
+Configure the icons
+
+```bash
+mkdir -p /home/justice-reaper/.icons/oomox-tokyo-night-dark
+cp -r icons/* /home/justice-reaper/.icons/oomox-tokyo-night-dark
+```
+
+Run qt5ct qt6ct and set these options
+
+| Option | Value |
+|--------|-------|
+| Style | Fusion |
+| Color Scheme | oomox-tokyo-night-dark |
+| Standard Dialogs | gtk3 |
+| Font General | Inter, 10 |
+| Font Fixed Width | Monospace, 10 |
+| Icon Theme | oomox-tokyo-night-dark |
+
+```bash
+qt5ct
+qt6ct
+```
+
+Run nwg-look and set these options
+
+| Option | Value |
+|--------|-------|
+| Widget Theme | oomox-tokyo-night-dark |
+| Icon Theme | oomox-tokyo-night-dark |
+| Default Font | Inter Regular, 11 |
+| Color Scheme | prefer-dark |
+| Cursor Theme | Windows-10-Alt-Light |
+
+```bash
+nwg-look
+```
+
 ### Configure zshrc and Powerlevel10k
 
 ```bash
@@ -636,7 +699,7 @@ sudo chsh -s /usr/bin/zsh root
 ### Copy the udev rules
 
 ```bash
-sudo cp udev/rules.d/* /etc/udev/rules.d/
+sudo cp udev/rules.d/* /etc/udev/rules.d
 ```
 
 ### Copy the pacman hooks
@@ -648,14 +711,14 @@ sudo cp hooks/* /etc/pacman.d/
 ### Copy the xorg configuration
 
 ```bash
-sudo cp xorg.conf.d/* /etc/X11/xorg.conf.d/
+sudo cp xorg.conf.d/* /etc/X11/xorg.conf.d
 ```
 
 ### Configure the rofi launcher filter
 
 ```bash
 mkdir -p ~/.local/share/applications
-find /usr/share/applications -name "*.desktop" | ~/.config/rofi/launcher/filter.sh
+find /usr/share/applications -name "*.desktop" | /home/justice-reaper/.config/rofi/launcher/filter.sh
 sudo cp rofi-launcher-filter.hook /etc/pacman.d/hooks
 sudo chmod 644 /etc/pacman.d/hooks/rofi-launcher-filter.hook
 ```
