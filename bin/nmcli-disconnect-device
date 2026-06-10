@@ -1,0 +1,10 @@
+#!/bin/bash
+
+script_name="nmcli-disconnect-device"
+
+if [[ -z "$1" ]]; then
+    echo "Usage: $script_name <interface>"
+    exit 1
+fi
+
+nmcli device disconnect "$1"

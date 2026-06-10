@@ -1,0 +1,10 @@
+#!/bin/bash
+
+script_name="nmcli-scan-wifi"
+
+if [[ -z "$1" ]]; then
+    echo "Usage: $script_name <interface>"
+    exit 1
+fi
+
+nmcli dev wifi list ifname "$1" --rescan yes

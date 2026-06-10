@@ -1,0 +1,10 @@
+#!/bin/bash
+
+script_name="nmcli-down-connection"
+
+if [[ -z "$1" ]]; then
+    echo "Usage: $script_name <name/uuid/dbus-path/active-path>"
+    exit 1
+fi
+
+nmcli connection down "$1"
