@@ -453,6 +453,7 @@ sudo pacman -S xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-po
 sudo pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection-editor thunar gvfs tumbler thunar-volman nwg-look
 sudo pacman -S waybar hyprpaper rofi dunst btop fastfetch jq lsd bat fzf grim flameshot wl-clipboard wl-clip-persist xf86-input-libinput
 sudo pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting celluloid featherpad jre21-openjdk openbsd-netcat qt5ct qt6ct
+sudo pacman -S xdg-utils
 ```
 
 ### Install paru as AUR helper
