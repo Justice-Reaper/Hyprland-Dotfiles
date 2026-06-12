@@ -432,11 +432,11 @@ sudo pacman -Syu
 ### Optimize the mirrors based on your location
 
 ```bash
+su root
 pacman -S rate-mirrors
 ```
 
 ```bash
-su root
 su justice-reaper -c "rate-mirrors artix" | tee /etc/pacman.d/mirrorlist
 su justice-reaper -c "rate-mirrors arch" | tee /etc/pacman.d/mirrorlist-arch
 su justice-reaper -c "rate-mirrors blackarch" | tee /etc/pacman.d/blackarch-mirrorlist
@@ -570,7 +570,7 @@ Activate Burp Suite Professional
 
 ```bash
 su justice-reaper
-javar -jar loader.jar &
+java -jar loader.jar &
 burpsuitepro
 ```
 
@@ -731,6 +731,10 @@ sudo cp bin/* /usr/bin
 ```
 
 ### Set waybar icon font
+
+```bash
+sudo cp -r fonts /usr/local/share
+```
 
 ### Set system default terminal
 
