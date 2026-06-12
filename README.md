@@ -730,7 +730,9 @@ chmod 755 bin/*
 sudo cp bin/* /usr/bin
 ```
 
-### Set the system default terminal
+### Set waybar icon font
+
+### Set system default terminal
 
 ```bash
 gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
@@ -751,17 +753,11 @@ sudo cp .zshrc /root
 sudo ln -s -f /home/justice-reaper/.p10k.zsh /root/.p10k.zsh
 ```
 
-### Copy the configuration files
+### Copy configuration files
 
 ```bash
 mv config .config
 cp -r .config /home/justice-reaper
-```
-
-### Copy the udev rules
-
-```bash
-cp rules/* /etc/udev/rules.d/
 ```
 
 ### Configure sddm and quickshell
@@ -775,31 +771,30 @@ chsh -s /usr/bin/zsh
 sudo chsh -s /usr/bin/zsh root
 ```
 
-### Copy the udev rules
+### Copy udev rules
 
 ```bash
-sudo cp udev/rules.d/* /etc/udev/rules.d
+cp rules/* /etc/udev/rules.d/
 ```
 
 ### Copy the pacman hooks
 
 ```bash
-sudo cp hooks/* /etc/pacman.d/
+sudo cp -r hooks /etc/pacman.d
 ```
 
 ### Copy the xorg configuration
 
 ```bash
-sudo cp xorg.conf.d/* /etc/X11/xorg.conf.d
+sudo cp X11/* /etc/X11/xorg.conf.d
 ```
 
 ### Configure the rofi launcher filter
 
 ```bash
-mkdir -p ~/.local/share/applications
-find /usr/share/applications -name "*.desktop" | /home/justice-reaper/.config/rofi/launcher/filter.sh
-sudo cp rofi-launcher-filter.hook /etc/pacman.d/hooks
-sudo chmod 644 /etc/pacman.d/hooks/rofi-launcher-filter.hook
+mkdir -p /home/justice-reaper/.local/share/applications
+find /usr/share/applications -name "*.desktop" | /home/justice-reaper/.config/rofi/filters/sync-desktop.sh
+/home/justice-reaper/.config/rofi/filters/desktop-cache.sh
 ```
 
 ## 3. How to recover the system when everything breaks
