@@ -65,9 +65,11 @@ current_ws=$(hyprctl activeworkspace -j | jq -r '.id')
 
 case $code in
     0)
+        hyprctl eval "hl.config({ cursor = { no_warps = true } })"
         hyprctl eval "hl.dispatch(hl.dsp.workspace.toggle_special({name = '${addr}'}))"
         hyprctl eval "hl.dispatch(hl.dsp.focus({window = 'address:${addr}'}))"
         hyprctl eval "hl.dispatch(hl.dsp.window.move({workspace = '${current_ws}'}))"
+        hyprctl eval "hl.config({ cursor = { no_warps = false } })"
         ;;
     10)
         hyprctl eval "hl.dispatch(hl.dsp.window.close({window = 'address:${addr}'}))"
