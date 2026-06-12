@@ -730,6 +730,12 @@ chmod 755 bin/*
 sudo cp bin/* /usr/bin
 ```
 
+### Set the system default terminal
+
+```bash
+gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
+```
+
 ### Configure zshrc and Powerlevel10k
 
 ```bash
