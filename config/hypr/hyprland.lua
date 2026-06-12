@@ -23,16 +23,6 @@ hl.monitor({
 })
 
 
----------------------
----- MY PROGRAMS ----
----------------------
-
--- Set programs that you use
-local terminal    = "kitty"
-local fileManager = "dolphin"
-local menu        = "/home/justice-reaper/.config/rofi/launcher/launcher.sh"
-
-
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -43,21 +33,19 @@ local menu        = "/home/justice-reaper/.config/rofi/launcher/launcher.sh"
 -- Or execute your favorite apps at launch like this:
 --
 -- hl.on("hyprland.start", function () 
---   hl.exec_cmd(terminal)
+--   hl.exec_cmd("kitty")
 --   hl.exec_cmd("nm-applet")
 --   hl.exec_cmd("waybar & hyprpaper & firefox")
 -- end)
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd("waybar")
     hl.exec_cmd("hyprpaper")
-    hl.exec_cmd("mako")
     hl.exec_cmd("wl-gammarelay-rs")
     hl.exec_cmd("wl-clip-persist --clipboard regular")
     hl.exec_cmd("/home/justice-reaper/.config/waybar/scripts/network-monitor.sh")
-    hl.exec_cmd("/home/justice-reaper/.config/rofi/polkit-agent/rofi-polkit-agent")
-    hl.exec_cmd("hyprctl devices -j | jq -e '.mice[] | select(.name | test(\"touchpad\") | not)' > /dev/null 2>&1 && /home/justice-reaper/.config/touchpad-control/touchpad-toggle.sh connected")
+    hl.exec_cmd("/home/justice-reaper/.config/rofi/polkit-agent/rofi-polkit-agent -theme /home/justice-reaper/.config/rofi/polkit-agent/style.rasi")
+    hl.exec_cmd("/home/justice-reaper/.config/touchpad-control/touchpad-toggle.sh")
 end)
 
 -------------------------------
@@ -71,7 +59,6 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("XCURSOR_THEME", "Windows-10-Alt-Light")
 hl.env("HYPRCURSOR_THEME", "Windows-10-Alt-Light")
 hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
-hl.env("QT_STYLE_OVERRIDE", "Fusion")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -157,22 +144,24 @@ hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1} 
 hl.curve("easy",           { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
 
 hl.animation({ leaf = "global",        enabled = true,  speed = 10,   bezier = "default" })
-hl.animation({ leaf = "border",        enabled = true,  speed = 5.39, bezier = "easeOutQuint" })
-hl.animation({ leaf = "windows",       enabled = true,  speed = 4.79, spring = "easy" })
-hl.animation({ leaf = "windowsIn",     enabled = true,  speed = 4.1,  spring = "easy",         style = "popin 87%" })
-hl.animation({ leaf = "windowsOut",    enabled = true,  speed = 1.49, bezier = "linear",       style = "popin 87%" })
-hl.animation({ leaf = "fadeIn",        enabled = true,  speed = 1.73, bezier = "almostLinear" })
-hl.animation({ leaf = "fadeOut",       enabled = true,  speed = 1.46, bezier = "almostLinear" })
-hl.animation({ leaf = "fade",          enabled = true,  speed = 3.03, bezier = "quick" })
-hl.animation({ leaf = "layers",        enabled = true,  speed = 3.81, bezier = "easeOutQuint" })
+hl.animation({ leaf = "border",        enabled = true,  speed = 5.5, bezier = "easeOutQuint" })
+hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.5, bezier = "almostLinear", style = "slide" })
+hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })
+
+hl.animation({ leaf = "windows",       enabled = true,  speed = 5, spring = "easy" })
+hl.animation({ leaf = "windowsIn",     enabled = true,  speed = 4,  spring = "easy",         style = "popin 100%" })
+hl.animation({ leaf = "windowsOut",    enabled = true,  speed = 1.5, bezier = "linear",       style = "popin 100%" })
+
+hl.animation({ leaf = "fade",          enabled = true,  speed = 3, bezier = "quick" })
+hl.animation({ leaf = "fadeIn",        enabled = true,  speed = 2, bezier = "almostLinear" })
+hl.animation({ leaf = "fadeOut",       enabled = true,  speed = 1.5, bezier = "almostLinear" })
+
+hl.animation({ leaf = "layers",        enabled = true,  speed = 4, bezier = "easeOutQuint" })
 hl.animation({ leaf = "layersIn",      enabled = true,  speed = 4,    bezier = "easeOutQuint", style = "fade" })
 hl.animation({ leaf = "layersOut",     enabled = true,  speed = 1.5,  bezier = "linear",       style = "fade" })
-hl.animation({ leaf = "fadeLayersIn",  enabled = true,  speed = 1.79, bezier = "almostLinear" })
-hl.animation({ leaf = "fadeLayersOut", enabled = true,  speed = 1.39, bezier = "almostLinear" })
-hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.94, bezier = "almostLinear", style = "slide" })
-hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 1.21, bezier = "almostLinear", style = "slide" })
-hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "almostLinear", style = "slide" })
-hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })
+
+hl.animation({ leaf = "fadeLayersIn",  enabled = true,  speed = 2, bezier = "almostLinear" })
+hl.animation({ leaf = "fadeLayersOut", enabled = true,  speed = 1.5, bezier = "almostLinear" })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only"
@@ -200,6 +189,7 @@ end
 hl.config({
     dwindle = {
         preserve_split = true, -- You probably want this
+        force_split = 2, -- New windows always split to the right/bottom
     },
 })
 
@@ -237,7 +227,7 @@ hl.config({
 hl.config({
     input = {
         kb_layout  = "es",
-        kb_variant = "nodeadkeys",
+        kb_variant = "basic",
         kb_model   = "",
         kb_options = "",
         kb_rules   = "",
@@ -275,21 +265,20 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 
 -- Launch terminal
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("kitty"))
 
 -- Take a screenshot
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd('pgrep -x slurp || grim -g "$(slurp)" - | wl-copy'))
-hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd('pgrep -x slurp || grim -g "$(slurp)" - | swappy -f -'))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("flameshot gui"))
 
 hl.bind(mainMod .. " + W", hl.dsp.window.close(), { repeating = true })
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("thunar"))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("/home/justice-reaper/.config/waybar/scripts/launch-tool.sh pavucontrol"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("/home/justice-reaper/.config/waybar/scripts/launch-tool.sh blueman-manager"))
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("/home/justice-reaper/.config/waybar/scripts/launch-tool.sh nm-connection-editor"))
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("/home/justice-reaper/.config/rofi/launcher/launcher.sh"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("/home/justice-reaper/.config/rofi/power-menu/power-menu.sh"))
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+hl.bind(mainMod .. " + L", hl.dsp.layout("togglesplit"))    -- dwindle only
 
 _float_saved = {}
 
@@ -367,7 +356,7 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i, follow=false}))
 end
 
-hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("/home/justice-reaper/.config/waybar/scripts/scratchpad-send.sh"))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("/home/justice-reaper/.config/rofi/scratchpad/send-to-scratchpad.sh"))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -445,8 +434,27 @@ hl.window_rule({
     float = true,
 })
 
-hl.window_rule({                                                                                                                                                                    
-     match = { class = "Rofi" },                                                                                                                                                     
-     float = true,                                                                                                                                                                   
-     pin = true,                                                                                                                                                                     
-})                                                                                                                                                                                  
+hl.window_rule({
+     match = { class = "Rofi" },
+     float = true,
+})
+
+hl.window_rule({
+     match = { class = "org.pulseaudio.pavucontrol" },
+     float = true,
+     size = "800 600",
+})
+
+hl.window_rule({
+     match = { class = "blueman-manager" },
+     float = true,
+     size = "800 600",
+})
+
+hl.window_rule({
+     match = { class = "flameshot" },
+     float = true,
+     fullscreen = 1,
+})
+
+

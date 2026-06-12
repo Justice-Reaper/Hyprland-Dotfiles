@@ -1,0 +1,15 @@
+#!/bin/bash
+
+tmp="/tmp/screenshot-$$.ppm"
+grim -t ppm "$tmp"
+region=$(slurp)
+
+if [ -z "$region" ]; then
+    rm -f "$tmp"
+    exit 0
+fi
+
+IFS=', x' read -r x y w h <<< "$region"
+
+magick "$tmp" -crop "${w}x${h}+${x}+${y}" +repage png:- | wl-copy --type image/png
+rm -f "$tmp"
