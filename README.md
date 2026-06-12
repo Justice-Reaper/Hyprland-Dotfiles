@@ -594,7 +594,7 @@ sudo cp burpsuite-professional/burpsuitepro.desktop /usr/share/applications
 cp burpsuite-professional/burpsuitepro.desktop /home/justice-reaper/.local/share/applications
 ```
 
-### Set as system theme tokyo night dark
+### Apply Tokyo Night Dark theme for user justice-reaper
 
 Configure the theme for GTK3
 
@@ -625,6 +625,70 @@ Configure the icons
 ```bash
 mkdir -p /home/justice-reaper/.icons/oomox-tokyo-night-dark
 cp -r oomox-themes/icons/* /home/justice-reaper/.icons/oomox-tokyo-night-dark
+```
+
+Run qt5ct qt6ct and set these options
+
+| Option | Value |
+|--------|-------|
+| Style | Fusion |
+| Color Scheme | oomox-tokyo-night-dark |
+| Standard Dialogs | gtk3 |
+| Font General | Inter, 10 |
+| Font Fixed Width | Monospace, 10 |
+| Icon Theme | oomox-tokyo-night-dark |
+
+```bash
+qt5ct
+qt6ct
+```
+
+Run nwg-look and set these options
+
+| Option | Value |
+|--------|-------|
+| Widget Theme | oomox-tokyo-night-dark |
+| Icon Theme | oomox-tokyo-night-dark |
+| Default Font | Inter Regular, 11 |
+| Color Scheme | prefer-dark |
+| Cursor Theme | Windows-10-Alt-Light |
+
+```bash
+nwg-look
+```
+
+### Apply Tokyo Night Dark theme for user root
+
+Configure the theme for GTK3
+
+```bash
+su root
+mkdir -p /root/.themes/oomox-tokyo-night-dark
+cp -r oomox-themes/gtk3/* /root/.themes/oomox-tokyo-night-dark
+```
+
+Configure the theme for GTK4
+
+```bash
+mkdir -p /root/.themes/oomox-tokyo-night-dark/gtk-4.0
+mkdir -p /root/.config/gtk-4.0
+cp oomox-themes/gtk4/gtk.css /root/.themes/oomox-tokyo-night-dark/gtk-4.0
+ln -sf /root/.themes/oomox-tokyo-night-dark/gtk-4.0/gtk.css /root/.config/gtk-4.0/gtk.css
+```
+
+Configure the theme for Qt5 and Qt6
+
+```bash
+mkdir -p /root/.config/qt5ct/colors /root/.config/qt6ct/colors
+cp oomox-themes/qt5ct/colors/oomox-tokyo-night-dark.conf /root/.config/qt5ct/colors
+cp oomox-themes/qt6ct/colors/oomox-tokyo-night-dark.conf /root/.config/qt6ct/colors
+```
+
+Configure the icons
+
+```bash
+mkdir -p /root/.icons/oomox-tokyo-night-dark
+cp -r oomox-themes/icons/* /root/.icons/oomox-tokyo-night-dark
 ```
 
 Run qt5ct qt6ct and set these options
