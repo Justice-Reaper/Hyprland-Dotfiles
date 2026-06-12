@@ -1,0 +1,133 @@
+/*****----- Colors -----*****/
+* {
+    selected:         #70A5EB;
+    black:            #101419;
+    white:            #DEE1E6;
+    gray:             #28344a;
+    red:              #E05F65;
+}
+
+/*****----- Fonts -----*****/
+* {
+    font:                       "Hack Nerd Font 10";
+}
+
+
+/*****----- Global Settings -----*****/
+* {
+    padding:                    0;
+    margin:                     0;
+    border:                     0;
+    spacing:                    0;
+    background-color:           transparent;
+    border-color:               transparent;
+}
+
+/*****----- Configuration -----*****/
+configuration {
+    show-icons:                 true;
+    display-drun:               " ";
+    normalize-match:            true;
+    icon-theme:                 "Papirus";        
+    sort:                       true;
+    sorting-method:             "fzf";
+    matching:                   "fuzzy";
+
+
+    /*---------- Drun Settings ----------*/
+    drun-display-format: "{name}";
+
+    drun {
+        parse-user: true;
+        parse-system: false;
+        fallback-icon: "application-x-addon";
+    }
+
+    /*---------- Keybindings ----------*/
+    kb-move-front: "KP_Home";
+    kb-row-first: "";
+    kb-move-end: "KP_End";
+    kb-row-last: "";
+    kb-move-word-back: "Alt+Left";
+    kb-move-word-forward: "Alt+Right";
+    kb-remove-word-back: "Alt+BackSpace";
+    kb-remove-word-forward: "Alt+Delete";
+    kb-custom-1: "Alt+Return";
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    width:                       330px;
+    background-color:            @black;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    padding:                     20px;
+    children:                    [ "inputbar", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    spacing:                     10px;
+    margin:                      0px 0px 15px 0px;
+    padding:                     10px 0px;
+    text-color:                  @white;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    text-color:                  inherit;
+}
+
+entry {
+    placeholder:                 "Search...";
+    text-color:                  inherit;
+}
+
+/*****----- Listview -----*****/
+listview {
+    lines:                       9;
+    scrollbar:                   true;
+    spacing:                     10px;
+    text-color:                  @white;
+}
+
+scrollbar {
+    margin:                      0px 0px 0px 5px;
+    handle-width:                5px ;
+    handle-color:                @selected;
+    background-color:            @gray;
+}
+
+/*****----- Elements -----*****/
+element {
+    spacing:                     10px;
+    padding:                     5px;
+    border-radius:               10px;
+    cursor:                      pointer;
+    text-color:                  inherit;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @black;
+}
+
+element-icon {
+    size:                        32px;
+    cursor:                      inherit;
+}
+
+element-text {
+    cursor:                      inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+}
+
+/*****----- Message -----*****/
+textbox {
+    margin:                      15px;
+    text-color:                  @red;
+}

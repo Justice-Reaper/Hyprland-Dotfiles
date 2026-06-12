@@ -1,0 +1,67 @@
+/*****----- Colors -----*****/
+* {
+    black:           #101419;
+    white:           #DEE1E6;
+    blue:            #70A5EB;
+    gray:            #28344a;
+}
+
+/*****----- Fonts -----*****/
+* {
+    font:             "Hack Nerd Font 11";
+}
+
+/*****----- Global Settings -----*****/
+* {
+    padding:          0;
+    margin:           0;
+    border:           0;
+    spacing:          0;
+    background-color: transparent;
+    border-color:     transparent;
+    text-color:       @blue;
+}
+
+/*****----- Configuration -----*****/
+configuration {
+
+    /*---------- Keybindings ----------*/
+    kb-move-front:              "KP_Home";
+    kb-row-first:               "";
+    kb-move-end:                "KP_End";
+    kb-row-last:                "";
+    kb-move-word-back:          "Alt+Left";
+    kb-move-word-forward:       "Alt+Right";
+    kb-remove-word-back:        "Alt+BackSpace";
+    kb-remove-word-forward:     "Alt+Delete";
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    width:                       850px;
+    background-color:            @black;
+}
+
+
+/*****----- Main Box -----*****/
+mainbox {
+    spacing:                     15px;
+    padding:                     15px;
+    children:                    [ "inputbar", "message" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    spacing:    10px;
+    children:   [ prompt, entry ];
+}
+
+prompt {
+    font:       "Hack Nerd Font Bold 11";
+}
+
+/*****----- Message -----*****/
+error-message {
+    padding: 15px;
+}
