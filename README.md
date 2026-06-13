@@ -778,7 +778,7 @@ sudo chsh -s /usr/bin/zsh root
 ### Copy udev rules
 
 ```bash
-cp rules/* /etc/udev/rules.d/
+sudo cp rules/* /etc/udev/rules.d/
 ```
 
 ### Copy the pacman hooks
