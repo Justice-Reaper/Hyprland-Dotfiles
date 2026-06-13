@@ -787,12 +787,6 @@ cp rules/* /etc/udev/rules.d/
 sudo cp -r hooks /etc/pacman.d
 ```
 
-### Copy the xorg configuration
-
-```bash
-sudo cp X11/* /etc/X11/xorg.conf.d
-```
-
 ### Configure the rofi launcher filter
 
 ```bash
