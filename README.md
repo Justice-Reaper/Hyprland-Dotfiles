@@ -631,7 +631,7 @@ Run qt5ct qt6ct and set these options
 
 | Option | Value |
 |--------|-------|
-| Style | Fusion |
+| Style | Windows |
 | Color Scheme | oomox-tokyo-night-dark |
 | Standard Dialogs | gtk3 |
 | Font General | Inter, 10 |
@@ -695,7 +695,7 @@ Run qt5ct qt6ct and set these options
 
 | Option | Value |
 |--------|-------|
-| Style | Fusion |
+| Style | Windows |
 | Color Scheme | oomox-tokyo-night-dark |
 | Standard Dialogs | gtk3 |
 | Font General | Inter, 10 |
