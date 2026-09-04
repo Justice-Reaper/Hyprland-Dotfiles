@@ -518,9 +518,9 @@ pacman -S ntfs-3g exfatprogs dosfstools unzip plocate wget blueman nm-connection
 pacman -S waybar hyprpaper rofi dunst btop fastfetch jq lsd bat fzf grim flameshot wl-clipboard wl-clip-persist xf86-input-libinput
 pacman -S zsh-autosuggestions zsh-completions zsh-syntax-highlighting celluloid qt5ct qt6ct gthumb net-tools nwg-look brightnessctl
 pacman -S libvirt-dinit qemu-desktop virt-manager dnsmasq edk2-ovmf swtpm dmidecode libosinfo guestfs-tools qrencode wireless-regdb
-pacman -S obsidian seclists nmap openbsd-netcat exiftool netexec kerbrute windapsearch pycharm-community-edition torbrowser-launcher
+pacman -S obsidian seclists python-html2text nmap openbsd-netcat exiftool netexec kerbrute windapsearch pycharm-community-edition
 pacman -S ffuf arp-scan perl-text-csv perl-lwp-protocol-https sqlmap python-pwntools wcvs katana-pd bind moreutils smbclient phpggc
-pacman -S jdk8-openjdk ysoserial tinja sstimap
+pacman -S jdk8-openjdk ysoserial tinja sstimap torbrowser-launcher
 exit
 ```
 
